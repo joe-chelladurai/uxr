@@ -2,8 +2,8 @@ pandoc: '2.18'
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-09-29T04:23Z
+last_built: 2022-09-29T04:34Z
 urls:
-  reference: https://meshach-joe.github.io/uxr/reference
-  article: https://meshach-joe.github.io/uxr/articles
+  reference: https://joe-chelladurai.github.io/uxr/reference
+  article: https://joe-chelladurai.github.io/uxr/articles
 
