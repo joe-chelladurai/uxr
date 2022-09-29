@@ -1,6 +1,17 @@
 
 
 
+#' Adjusted Wald Confidence Intervals
+#'
+#' @param success success
+#' @param total total
+#' @param ci_z z value
+#'
+#' @return lower_ci, upper_ci
+#' @export
+
+
+
 adj_wald_ci <- function(success, total, ci_z) {
 
 

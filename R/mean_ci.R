@@ -1,4 +1,13 @@
 
+
+#' Mean Confidence Intervals
+#'
+#' @param x values
+#' @param alpha alpha
+#'
+#' @return lower_ci, upper_ci
+#' @export
+
 #' @importFrom stats median qt
 
 

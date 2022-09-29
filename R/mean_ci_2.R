@@ -1,5 +1,15 @@
 
 
+
+#' Mean Confidence Intervals (Large Samples)
+#'
+#' @param x values
+#' @param z z value
+#'
+#' @return lower_ci, upper_ci
+#' @export
+
+
 #' @importFrom stats median
 
 mean_ci_2 <- function(x, z) {
