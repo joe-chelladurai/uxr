@@ -3,7 +3,7 @@ Type: Package
 Title: UX Research
 Version: 0.1.0
 Author: Joe Chelladurai
-Maintainer: The package maintainer <yourself@somewhere.net>
+Maintainer: Joe Chelladurai <yourself@somewhere.net>
 Description: The purpose of this package is to provide convenience functions for user experience research.
     Particularly, this package focuses on quantitative user experience testing and reporting.
 License: MIT + file LICENSE
