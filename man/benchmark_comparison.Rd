@@ -19,3 +19,7 @@ probability
 \description{
 Benchmark Comparison
 }
+\examples{
+benchmark_comparison(10, 12, 0.7)
+benchmark_comparison(60, 100, 0.7)
+}

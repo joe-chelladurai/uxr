@@ -7,6 +7,9 @@
 #'
 #' @return lower_ci, upper_ci
 #' @export
+#' @examples
+#' wald_ci(10, 12, 1.96)
+#' wald_ci(5, 7, 1.96)
 
 wald_ci <- function(success, total, ci_z) {
 
@@ -22,4 +25,3 @@ wald_ci <- function(success, total, ci_z) {
 
 }
 
-# wald_ci(10,12, 1.96)

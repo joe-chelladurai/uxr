@@ -11,6 +11,10 @@
 #'
 #' @importFrom stats dbinom
 #' @importFrom scales percent
+#' @examples
+#' benchmark_comparison(10, 12, 0.7)
+#' benchmark_comparison(60, 100, 0.7)
+
 
 
 benchmark_comparison <- function(success, total, benchmark) {
@@ -24,4 +28,3 @@ benchmark_comparison <- function(success, total, benchmark) {
   )
 }
 
-# benchmark_comparison(success = 10, total = 12, benchmark = 90/100)

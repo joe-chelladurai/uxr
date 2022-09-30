@@ -7,11 +7,11 @@
 #' @param failure failure
 #' @param total total
 #' @param ci_z z value
-#'
 #' @return lower_ci, upper_ci
 #' @export
-#'
-#'
+#' @examples
+#' task_completion(80, NULL, 100, 1.96)
+#' task_completion(10, NULL, 12, 1.96)
 
 
 task_completion <- function(success, failure = NULL, total, ci_z) {

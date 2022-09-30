@@ -9,6 +9,9 @@
 #' @export
 
 #' @importFrom stats median qt
+#' @examples
+#' mean_ci(c(1, 2, 3, 4, 5, 6, 7), 1.96)
+#' mean_ci(c(2, 4, 6, 8), 1.96)
 
 
 mean_ci <- function(x, alpha) {
@@ -34,5 +37,3 @@ mean_ci <- function(x, alpha) {
        upper_ci = upper_ci)
 }
 
-# times <- c(94, 95, 96, 113, 121, 132, 190, 193, 255, 298)
-# mean_ci(times, 0.05)

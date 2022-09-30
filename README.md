@@ -1,14 +1,11 @@
 
 
 
-# UX Research in R
+# User Experience Research in R
 
-## Installation
-```
-remotes::install_github("joe-chelladurai/uxr")
-```
+The purpose of this package is to provide convenience functions for user experience research.
+Particularly, this package focuses on quantitative user experience testing and reporting.
 
-This package is under very early development and things may change rapidly.
 
 ## Available functions
 

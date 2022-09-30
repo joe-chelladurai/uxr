@@ -19,3 +19,7 @@ lower_ci, upper_ci
 \description{
 Wald Confidence Intervals
 }
+\examples{
+wald_ci(10, 12, 1.96)
+wald_ci(5, 7, 1.96)
+}

@@ -9,6 +9,9 @@
 #'
 #' @return lower_ci, upper_ci
 #' @export
+#' @examples
+#' adj_wald_ci(10, 12, 1.96)
+#' adj_wald_ci(5, 7, 1.96)
 
 
 
@@ -35,4 +38,3 @@ adj_wald_ci <- function(success, total, ci_z) {
        upper_ci = upper_ci)
 }
 
-# adj_wald_ci(7, 10, 1.96)

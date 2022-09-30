@@ -21,3 +21,7 @@ lower_ci, upper_ci
 \description{
 Task Completion
 }
+\examples{
+task_completion(80, NULL, 100, 1.96)
+task_completion(10, NULL, 12, 1.96)
+}

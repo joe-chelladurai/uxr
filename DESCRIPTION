@@ -1,11 +1,13 @@
 Package: uxr
 Type: Package
-Title: UX Research
-Version: 0.1.0
+Title: User Experience Research
+Version: 0.1.1
 Author: Joe Chelladurai
-Maintainer: Joe Chelladurai <yourself@somewhere.net>
-Description: The purpose of this package is to provide convenience functions for user experience research.
-    Particularly, this package focuses on quantitative user experience testing and reporting.
+Maintainer: Joe Chelladurai <joe.chelladurai@outlook.com>
+Description: Provides convenience functions for user experience research
+    with an emphasis on quantitative user experience testing and reporting.
+    The functions are designed to translate statistical approaches to 
+    applied user experience research.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

@@ -17,3 +17,7 @@ lower_ci, upper_ci
 \description{
 Mean Confidence Intervals
 }
+\examples{
+mean_ci(c(1, 2, 3, 4, 5, 6, 7), 1.96)
+mean_ci(c(2, 4, 6, 8), 1.96)
+}
