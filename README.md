@@ -21,40 +21,18 @@ remotes::install_github("joe-chelladurai/uxr")
 
 ## Available functions
 
-### Published on CRAN
+**Published on CRAN**
 
-```
-benchmark_comparison
-```
-
-```
-adjusted_wald_ci
-```
-```
-wald test
-```
-```
-benchmark_comparison
-```
-```
-task_completion
-```
+ - `benchmark_comparison`
+ - `adjusted_wald_ci`
+ - `wald test`
+ - `benchmark_comparison`
+ - `task_completion`
+ - `mean_ci`
+ - `mean_ci_2`
 
 
-```
-# small sample
-mean_ci
-```
+**Development Version**
 
-```
-# large sample
-mean_ci_2
-```
-
-
-### Development Version
-
-```
-task_time_benchmark
-```
+ - `task_time_benchmark`
 
