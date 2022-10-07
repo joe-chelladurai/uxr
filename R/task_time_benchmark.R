@@ -6,9 +6,9 @@
 #' @param alpha alpha
 #' @return lower_ci, upper_ci, t, probability
 #' @export
+#' @importFrom stats pt sd
 #' @examples
 #' task_time_benchmark(c(1, 2, 3), 2, 0.05)
-#' task_time_benchmark(10, NULL, 12, 1.96)
 
 
 task_time_benchmark <- function(x, benchmark, alpha) {
