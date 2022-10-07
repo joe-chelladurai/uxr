@@ -23,7 +23,6 @@ remotes::install_github("joe-chelladurai/uxr")
 
 **Published on CRAN**
 
- - `benchmark_comparison`
  - `adjusted_wald_ci`
  - `wald test`
  - `benchmark_comparison`
