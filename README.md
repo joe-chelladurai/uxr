@@ -34,4 +34,5 @@ remotes::install_github("joe-chelladurai/uxr")
 **Development Version**
 
  - `task_time_benchmark`
+ - `t_test`
 
