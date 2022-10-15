@@ -10,6 +10,8 @@ paired_t_test(x, y, ...)
 \item{x}{x}
 
 \item{y}{y}
+
+\item{...}{other arguments passed to paired t-test}
 }
 \value{
 results

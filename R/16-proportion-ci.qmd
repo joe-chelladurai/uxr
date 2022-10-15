@@ -1,0 +1,205 @@
+---
+title: "16-proportion-ci"
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+
+design = c("A","B")
+complete = c(11, 5)
+incomplete = c(1, 5)
+data <- data.frame(design, complete, incomplete)
+
+data <- data %>% pivot_longer(!design, names_to = "rate", values_to = "n") %>% uncount(n)
+
+
+
+n_1_two_prop_test <- function(x, y, data, value, z) {
+  
+  # numerator
+  #  a <- prop.table(table(x, y), 1) |> data.frame() 
+  #  a <- abs(diff(a$Freq))[1]
+  a <- abs(diff(prop.table(table(data$design, data$rate), 1)))
+  a <- a[1, value]
+  n <- nrow(data)
+  b <- sqrt((n-1)/n)
+  num <- a*b
+  
+  # denominator
+  count <- table(x, y) |> data.frame() %>% filter(.[2] == value)
+  count <- sum(count$Freq)
+  total <- table(x, y) |> data.frame() 
+  total <- sum(total$Freq)
+  P <- count/total
+  Q <- 1-P
+  c <- P*Q
+  d <- sum(1/rowSums(table(data$design, data$rate)))
+  
+  den <- sqrt(c*d)
+  
+  result <- num/den
+  
+  pvalue <- 2*pnorm(q=result, lower.tail=FALSE)
+  
+  
+   
+  z_sq <- z^2
+  z_q <- z_sq/4
+  z_h <- z_sq/2
+  tab <- table(x, y)
+  den_x <- rowSums(tab)[[1]]
+  den_y <- rowSums(tab)[[2]]
+  num_x <- tab[1, value]
+  num_y <- tab[2, value]
+  p_adj1 <- (num_x + z_q)/(den_x + z_h)
+  p_adj2 <- (num_y + z_q)/(den_y + z_h)
+  n_adj1 <- den_x + z_h
+  n_adj2 <- den_y + z_h
+  p_diff <- p_adj1 - p_adj2
+  adj <- z*sqrt(((p_adj1*(1-p_adj1))/n_adj1) + ((p_adj2*(1-p_adj2))/n_adj2))
+  lower_ci <- p_diff - adj
+  upper_ci <- p_diff + adj
+ 
+  
+  
+  
+  data.frame(a = a,
+             b = b,
+             c = c,
+             d = d,
+             num = num,
+             n = n,
+             P = P,
+             Q = Q,
+             den = den,
+             result = result,
+             pvalue = pvalue,
+             z_q = z_q,
+             z_h = z_h,
+             num_x = num_x,
+             den_x = den_x,
+             num_y = num_y,
+             den_y = den_y,
+             p_adj1 = p_adj1,
+             p_adj2 = p_adj2,
+             n_adj1 = n_adj1,
+             n_adj2 = n_adj2,
+             p_diff = p_diff,
+             adj = adj,
+             lower_ci = lower_ci,
+             upper_ci = upper_ci) |> t()
+  
+}
+```
+
+```{r}
+z <- 1.96
+
+z_squared <- z^2
+
+quarter_z_squared <- z_squared/4
+
+half_z_squared <- z_squared/2
+
+p_adj <- function(z) {
+  
+  z_sq <- z^2
+  
+  z_q <- z_sq/4
+  z_h <- z_sq/2
+  
+  list(z_q = z_q,
+       z_h = z_h)
+}
+#x+1
+#n+2
+
+p_adj(z)
+```
+
+```{r}
+n_1_two_prop_test(data$design, data$rate, data, value = "complete", z = 1.96)
+```
+
+```{r}
+den_x1 <- rowSums(table(data$design, data$rate))[[1]]
+
+den_x2 <- rowSums(table(data$design, data$rate))[[2]]
+
+num_x1 <- table(data$design, data$rate)[1, "complete"]
+
+num_x2 <- table(data$design, data$rate)[2, "complete"]
+
+```
+
+```{r}
+den_x1
+num_x1
+```
+
+```{r}
+  count <- table(x, y) |> data.frame() %>% filter(.[2] == value)
+  count <- sum(count$Freq)
+  total <- table(x, y) |> data.frame() 
+  total <- sum(total$Freq)
+```
+
+```{r}
+table(data$design, data$rate) |> data.frame() %>% filter(.[2] == "complete")
+```
+
+```{r}
+sum(1/rowSums(table(data$design, data$rate)))
+```
+
+```{r}
+
+
+
+
+n_1_p_adj <- function(x, y, z, value) {
+  
+  z_sq <- z^2
+  z_q <- z_sq/4
+  z_h <- z_sq/2
+  tab <- table(x, y)
+  den_x <- rowSums(tab)[[1]]
+  den_y <- rowSums(tab)[[2]]
+  num_x <- tab[1, value]
+  num_y <- tab[2, value]
+  p_adj1 <- (num_x + z_q)/(den_x + z_h)
+  p_adj2 <- (num_y + z_q)/(den_y + z_h)
+  n_adj1 <- den_x + z_h
+  n_adj2 <- den_y + z_h
+  p_diff <- p_adj1 - p_adj2
+  adj <- z*sqrt(((p_adj1*(1-p_adj1))/n_adj1) + ((p_adj2*(1-p_adj2))/n_adj2))
+  lower_ci <- p_diff - adj
+  upper_ci <- p_diff + adj
+ 
+  list(z_q = z_q,
+       z_h = z_h,
+       num_x = num_x,
+       den_x = den_x,
+       num_y = num_y,
+       den_y = den_y,
+       p_adj1 = p_adj1,
+       p_adj2 = p_adj2,
+       n_adj1 = n_adj1,
+       n_adj2 = n_adj2,
+       p_diff = p_diff,
+       adj = adj,
+       lower_ci = lower_ci,
+       upper_ci = upper_ci)
+  
+  
+}
+```
+
+```{r}
+n_1_p_adj(data$design, data$rate, 1.96, "complete")
+
+```

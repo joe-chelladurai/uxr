@@ -10,6 +10,8 @@ t_test(x, y, ...)
 \item{x}{x}
 
 \item{y}{y}
+
+\item{...}{other arguments passed to t-test}
 }
 \value{
 results
@@ -18,5 +20,6 @@ results
 T-test
 }
 \examples{
+
 t_test(mtcars$mpg, mtcars$am)
 }

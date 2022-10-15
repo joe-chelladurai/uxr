@@ -1,11 +1,10 @@
 
 
-
 #' Paired t-test
 #'
 #' @param x x
 #' @param y y
-#'
+#' @param ... other arguments passed to paired t-test
 #' @return results
 #' @export
 #'

@@ -5,10 +5,11 @@
 #'
 #' @param x x
 #' @param y y
-#'
+#' @param ... other arguments passed to t-test
 #' @return results
 #' @export
 #' @examples
+#'
 #' t_test(mtcars$mpg, mtcars$am)
 
 
