@@ -20,7 +20,18 @@ library(uxr)
 
 The `compare_benchmark_*` functions provide ways to compare benchmark with data like events and times. 
 
-Events are outcomes of things that happen. For example, 10 out of 14 people successfully completed a task on an interface. We would like to know if this success rate can be above a certain threshold, let's say 80%. First we can calculate the success rate which is 10/14 = 0.84 (or 84%). Now the function takes the binomial probability of this and returns a probability value. We sum all the event probabilities and return a composite score. This is an estimate of how things might turn out if we were to implement this interface.
+
+## Compare an Event with a Benchmark
+
+An event is "a thing that happens" (Oxford Learner's Dictionary).
+
+**Example:**
+
+10 out of 14 people successfully completed a task on an interface. What is the probability of success above a benchmark of 80%? 
+
+You can use the `compare_benchmark_event()` function to answer this question. This function requires a benchmark value, number of events (in this case successful events), and the total number of events. To pass a `benchmark` value of 80%, you'll need to specify it as 0.8. The `event` and `total` arguments each take numeric values 1 or above.
+
+The function calculates the success rates and returns a cumulative probability value against the benchmark. This probability value indicates the success rate  if we were to use this interface with potential users, given a representative sample.
 
 ```{r}
 compare_benchmark_event(benchmark = 0.80,

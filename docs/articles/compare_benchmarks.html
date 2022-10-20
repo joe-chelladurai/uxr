@@ -74,14 +74,23 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">uxr</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>compare_benchmark_*</code> functions provide ways to
 compare benchmark with data like events and times.</p>
-<p>Events are outcomes of things that happen. For example, 10 out of 14
-people successfully completed a task on an interface. We would like to
-know if this success rate can be above a certain threshold, let’s say
-80%. First we can calculate the success rate which is 10/14 = 0.84 (or
-84%). Now the function takes the binomial probability of this and
-returns a probability value. We sum all the event probabilities and
-return a composite score. This is an estimate of how things might turn
-out if we were to implement this interface.</p>
+<div class="section level2">
+<h2 id="compare-an-event-with-a-benchmark">Compare an Event with a Benchmark<a class="anchor" aria-label="anchor" href="#compare-an-event-with-a-benchmark"></a>
+</h2>
+<p>An event is “a thing that happens” (Oxford Learner’s Dictionary).</p>
+<p><strong>Example:</strong></p>
+<p>10 out of 14 people successfully completed a task on an interface.
+What is the probability of success above a benchmark of 80%?</p>
+<p>You can use the <code><a href="../reference/compare_benchmark_event.html">compare_benchmark_event()</a></code> function to
+answer this question. This function requires a benchmark value, number
+of events (in this case successful events), and the total number of
+events. To pass a <code>benchmark</code> value of 80%, you’ll need to
+specify it as 0.8. The <code>event</code> and <code>total</code>
+arguments each take numeric values 1 or above.</p>
+<p>The function calculates the success rates and returns a cumulative
+probability value against the benchmark. This probability value
+indicates the success rate if we were to use this interface with
+potential users, given a representative sample.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/compare_benchmark_event.html">compare_benchmark_event</a></span><span class="op">(</span>benchmark <span class="op">=</span> <span class="fl">0.80</span>,</span>
 <span>                        event <span class="op">=</span> <span class="fl">10</span>,</span>
@@ -102,6 +111,7 @@ out if we were to implement this interface.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $text_result</span></span>
 <span><span class="co">#&gt; [1] "Executive: Based on the success rate of 84%, the probability that this rate exceeds a benchmark of 80% is 44%"</span></span></code></pre></div>
+</div>
   </main>
 </div>
 
