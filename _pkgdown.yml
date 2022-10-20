@@ -1,3 +1,7 @@
 url: https://joe-chelladurai.github.io/uxr/
 template:
   bootstrap: 5
+  includes:
+    in_header: |
+      <script defer data-domain="joe-chelladurai.github.io/uxr" src="https://plausible.io/js/plausible.js"></script>
+      <script data-goatcounter="https://joe-chelladurai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
