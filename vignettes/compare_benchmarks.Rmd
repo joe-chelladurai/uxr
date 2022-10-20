@@ -21,7 +21,7 @@ The `compare_benchmark_*` functions provide ways to compare benchmark with data 
 
 ## Compare an Event with a Benchmark
 
-**Note**: This function is not yet released. You need to install the development version to use this function. To install the developmental version enter `remotes::install_github("joe-chelladurai/uxr")`. 
+**Note**: This function is not yet released. You need to install the development version to use this function. To install the developmental version enter this in your console: `remotes::install_github("joe-chelladurai/uxr")`. 
 
 An event is "a thing that happens" (Oxford Learner's Dictionary).
 
