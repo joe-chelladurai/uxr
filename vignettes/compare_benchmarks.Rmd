@@ -14,14 +14,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(uxr)
-```
+
 
 The `compare_benchmark_*` functions provide ways to compare benchmark with data like events and times. 
 
 
 ## Compare an Event with a Benchmark
+
+**Note**: This function is not yet released. You need to install the development version to use this function. To install the developmental version enter `remotes::install_github("joe-chelladurai/uxr")`. 
 
 An event is "a thing that happens" (Oxford Learner's Dictionary).
 
@@ -33,7 +33,12 @@ You can use the `compare_benchmark_event()` function to answer this question. Th
 
 The function calculates the success rates and returns a cumulative probability value against the benchmark. This probability value indicates the success rate  if we were to use this interface with potential users, given a representative sample.
 
+```{r setup, echo = "false"}
+library(uxr)
+```
+
 ```{r}
+library(uxr)
 compare_benchmark_event(benchmark = 0.80,
                         event = 10,
                         total = 12,
