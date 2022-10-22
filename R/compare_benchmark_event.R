@@ -37,14 +37,13 @@ compare_benchmark_event <- function(benchmark, event, total, event_type = "", no
 
   probability <- round(result, 3)
 
-  minimal <-  paste("Minimal: Based on the", event_type, paste0("rate of ", rate, ","),
+  minimal <-  paste("Based on the", event_type, paste0("rate of ", rate, ","),
                     "the probability that this rate exceeds a benchmark of",
                     benchmark, "is",
                     result_percent)
 
-  technical <- paste("Technical: ",
-                     "Probability values were computed based on values in a binomial distribution",
-                     "Based on the", event_type, paste0("rate of ", rate, ","),
+  technical <- paste("Probability values were computed based on the binomial distribution",
+                     "With the", event_type, paste0("rate of ", rate, ","),
                      "the probability that this rate exceeds a benchmark of",
                      benchmark, "is",
                      result)
@@ -57,9 +56,9 @@ compare_benchmark_event <- function(benchmark, event, total, event_type = "", no
   text_result <- match.arg(notes)
 
 
+  cli::cli_h1("Compare Event Rate with a Benchmark")
 
-
-  list(event = event,
+  result <- data.frame(event = event,
        total = total,
        benchmark = benchmark,
        probability = probability,
@@ -68,7 +67,32 @@ compare_benchmark_event <- function(benchmark, event, total, event_type = "", no
                              technical = technical,
                              executive = executive)
   )
+
+  result2 <- result |>
+    t() |>
+    data.frame() |>
+    tibble::rownames_to_column("term") |>
+    data.frame() |>
+    dplyr::rename(result = t.result.) |>
+    huxtable::as_hux()
+
+  huxtable::position(result2) <- "left"
+
+  result2 <- huxtable::map_align(result2, huxtable::by_cols("left", "right"))
+
+  huxtable::print_screen(result2, colnames = FALSE)
+
+  result3 <- data.frame(result2)
+
+  return(invisible(result3))
+
+
 }
 
 
 
+compare_benchmark_event(benchmark = 0.7,
+                     event = 10,
+                     total = 12,
+                     event_type = "success",
+                     notes = "minimal")
