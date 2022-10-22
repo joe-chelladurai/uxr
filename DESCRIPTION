@@ -18,6 +18,7 @@ Imports:
     huxtable,
     magrittr,
     scales,
+    stringr,
     tibble,
     tidyr
 Language: en

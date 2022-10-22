@@ -1,4 +1,4 @@
 #' @keywords internal
 "_PACKAGE"
 
-utils::globalVariables(c("pairs", "value", "type"))
+utils::globalVariables(c("pairs", "value", "type", "t.result.", "term"))

@@ -31,8 +31,33 @@ compare_benchmark_time <- function(benchmark, time, alpha, remove_missing = FALS
   lower_ci <- exp(mean(log(time), na.rm = remove_missing) - se*t1)
   upper_ci <- exp(mean(log(time), na.rm = remove_missing) + se*t1)
 
-  list(lower_ci = lower_ci,
+  result <- data.frame(lower_ci = lower_ci,
        upper_ci = upper_ci,
        t = t,
        probability = probability)
+
+
+  result2 <- result |>
+    t() |>
+    data.frame() |>
+    tibble::rownames_to_column("term") |>
+    data.frame() |>
+    huxtable::as_hux()
+
+  huxtable::position(result2) <- "left"
+
+
+  cli::cli_h1("Compare Time with a Benchmark")
+
+
+  result3 <- result2 |> dplyr::filter(!stringr::str_detect(term, "text_result"))
+  result3 <- huxtable::map_align(result3, huxtable::by_cols("left", "right"))
+
+  huxtable::print_screen(result3, colnames = FALSE)
+
+  result4 <- data.frame(result2)
+
+  return(invisible(result4))
+
 }
+

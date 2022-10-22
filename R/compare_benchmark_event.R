@@ -10,6 +10,7 @@
 #' @return list of event rate, probability, notes
 #' @export
 #' @import magrittr
+#' @importFrom stringr str_detect
 #' @importFrom stats dbinom
 #' @importFrom scales percent
 #' @examples
@@ -58,6 +59,8 @@ compare_benchmark_event <- function(benchmark, event, total, event_type = "", no
 
   cli::cli_h1("Compare Event Rate with a Benchmark")
 
+
+
   result <- data.frame(event = event,
        total = total,
        benchmark = benchmark,
@@ -67,6 +70,8 @@ compare_benchmark_event <- function(benchmark, event, total, event_type = "", no
                              technical = technical,
                              executive = executive)
   )
+
+  cli::cli_text(result$text_result)
 
   result2 <- result |>
     t() |>
@@ -78,21 +83,18 @@ compare_benchmark_event <- function(benchmark, event, total, event_type = "", no
 
   huxtable::position(result2) <- "left"
 
-  result2 <- huxtable::map_align(result2, huxtable::by_cols("left", "right"))
+  result3 <- result2 |> dplyr::filter(!stringr::str_detect(term, "text_result"))
+  result3 <- huxtable::map_align(result3, huxtable::by_cols("left", "right"))
 
-  huxtable::print_screen(result2, colnames = FALSE)
+  huxtable::print_screen(result3, colnames = FALSE)
 
-  result3 <- data.frame(result2)
+  result4 <- data.frame(result2)
 
-  return(invisible(result3))
+  return(invisible(result4))
 
 
 }
 
 
 
-compare_benchmark_event(benchmark = 0.7,
-                     event = 10,
-                     total = 12,
-                     event_type = "success",
-                     notes = "minimal")
+
