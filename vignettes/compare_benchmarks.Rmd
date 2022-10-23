@@ -38,11 +38,28 @@ library(uxr)
 ```
 
 ```{r}
-library(uxr)
 compare_benchmark_event(benchmark = 0.80,
                         event = 10,
                         total = 12,
                         event_type = "success",
                         notes = "executive")
+```
+
+## Compare Time with a Benchmark
+
+**Note**: This function is not yet released. You need to install the development version to use this function. To install the developmental version enter this in your console: `remotes::install_github("joe-chelladurai/uxr")`. 
+
+
+**Example:**
+
+7 people successfully took 60, 53, 70, 42, 62, 43, and 81 seconds to complete a task. What is the probability that time taken to complete this task is above a time of 60 seconds? 
+
+You can use the `compare_benchmark_time()` function to answer this question. This function requires a benchmark value and a list of times. To pass a `benchmark` value of 60s, you can specify this as 60. 
+
+
+```{r}
+compare_benchmark_time(benchmark = 60,
+                       time = c(60, 53, 70, 42, 62, 43, 81),
+                       alpha = 0.05)
 ```
 
