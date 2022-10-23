@@ -95,21 +95,20 @@ indicates the success rate if we were to use this interface with
 potential users, given a representative sample.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">uxr</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compare_benchmark_event.html">compare_benchmark_event</a></span><span class="op">(</span>benchmark <span class="op">=</span> <span class="fl">0.80</span>,</span>
-<span>                        event <span class="op">=</span> <span class="fl">10</span>,</span>
-<span>                        total <span class="op">=</span> <span class="fl">12</span>,</span>
-<span>                        event_type <span class="op">=</span> <span class="st">"success"</span>,</span>
-<span>                        notes <span class="op">=</span> <span class="st">"executive"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Compare Event Rate with a Benchmark</span> <span style="color: #00BBBB;">─────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; Executive: Based on the success rate of 84%, the probability that this rate</span></span>
-<span><span class="co">#&gt; exceeds a benchmark of 80% is 44%</span></span>
-<span><span class="co">#&gt;   term           result  </span></span>
-<span><span class="co">#&gt;   event              10  </span></span>
-<span><span class="co">#&gt;   total              12  </span></span>
-<span><span class="co">#&gt;   benchmark         80%  </span></span>
-<span><span class="co">#&gt;   probability     0.442</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_benchmark_event</span>(<span class="at">benchmark =</span> <span class="fl">0.80</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">event =</span> <span class="dv">10</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">total =</span> <span class="dv">12</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">event_type =</span> <span class="st">"success"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">notes =</span> <span class="st">"executive"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a> [36m── [39m  [1mCompare Event Rate with a Benchmark [22m  [36m───────────────────────────────────────── [39m</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Executive<span class="sc">:</span> Based on the success rate of <span class="dv">84</span>%, the probability that this rate</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>exceeds a benchmark of <span class="dv">80</span><span class="sc">% is 44%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  term           result  </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  event              <span class="dv">10</span>  </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  total              <span class="dv">12</span>  </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  benchmark         <span class="dv">80</span>%  </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  probability     <span class="fl">0.442</span>  </span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="compare-time-with-a-benchmark">Compare Time with a Benchmark<a class="anchor" aria-label="anchor" href="#compare-time-with-a-benchmark"></a>
@@ -126,17 +125,16 @@ this task is above a time of 60 seconds?</p>
 answer this question. This function requires a benchmark value and a
 list of times. To pass a <code>benchmark</code> value of 60s, you can
 specify this as 60.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compare_benchmark_time.html">compare_benchmark_time</a></span><span class="op">(</span>benchmark <span class="op">=</span> <span class="fl">60</span>,</span>
-<span>                       time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">60</span>, <span class="fl">53</span>, <span class="fl">70</span>, <span class="fl">42</span>, <span class="fl">62</span>, <span class="fl">43</span>, <span class="fl">81</span><span class="op">)</span>,</span>
-<span>                       alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Compare Time with a Benchmark</span> <span style="color: #00BBBB;">───────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt;   term          t.result.  </span></span>
-<span><span class="co">#&gt;   lower_ci           45.8  </span></span>
-<span><span class="co">#&gt;   upper_ci           71.7  </span></span>
-<span><span class="co">#&gt;   t                 0.509  </span></span>
-<span><span class="co">#&gt;   probability       0.314</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_benchmark_time</span>(<span class="at">benchmark =</span> <span class="dv">60</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">time =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">53</span>, <span class="dv">70</span>, <span class="dv">42</span>, <span class="dv">62</span>, <span class="dv">43</span>, <span class="dv">81</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">alpha =</span> <span class="fl">0.05</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a> [36m── [39m  [1mCompare Time with a Benchmark [22m  [36m─────────────────────────────────────────────── [39m</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  term          t.result.  </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  lower_ci           <span class="fl">45.8</span>  </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  upper_ci           <span class="fl">71.7</span>  </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  t                 <span class="fl">0.509</span>  </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  probability       <span class="fl">0.314</span>  </span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
