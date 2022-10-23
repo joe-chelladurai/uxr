@@ -4,16 +4,16 @@
 \alias{get_concordant_discordant_pairs}
 \title{Get concordant and discordant pairs for two variables}
 \usage{
-get_concordant_discordant_pairs(.data, id, var1, var2)
+get_concordant_discordant_pairs(.data, id, var_1, var_2)
 }
 \arguments{
 \item{.data}{= data}
 
 \item{id}{= id column}
 
-\item{var1}{variable 1}
+\item{var_1}{variable 1}
 
-\item{var2}{variable 2}
+\item{var_2}{variable 2}
 }
 \value{
 a data frame
@@ -23,5 +23,5 @@ Get concordant and discordant pairs for two variables
 }
 \examples{
 mtcars$id <- seq.int(nrow(mtcars))
-get_concordant_discordant_pairs(mtcars, id = id, var1 = vs, var2 = am)
+get_concordant_discordant_pairs(mtcars, id = id, var_1 = vs, var_2 = am)
 }
