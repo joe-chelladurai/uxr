@@ -22,7 +22,7 @@ lower_ci, upper_ci, t, probability
 Compare Time with a Benchmark
 }
 \examples{
-compare_benchmark_time(time = c(1, 2, 3),
-                       benchmark = 2,
+compare_benchmark_time(time = c(60, 53, 70, 42, 62, 43, 81),
+                       benchmark = 60,
                        alpha = 0.05)
 }
