@@ -10,12 +10,12 @@
 #' @return lower_ci, upper_ci
 #' @export
 #' @examples
-#' adj_wald_ci(10, 12, 1.96)
-#' adj_wald_ci(5, 7, 1.96)
+#' test_wald_adj(10, 12, 1.96)
+#' test_wald_adj(5, 7, 1.96)
 
 
 
-adj_wald_ci <- function(success, total, ci_z) {
+test_wald_adj <- function(success, total, ci_z) {
 
 
   adjusted_proportion <- function(success, total, ci_z) {

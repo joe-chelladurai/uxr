@@ -9,7 +9,7 @@ compare_benchmark_event(
   event,
   total,
   event_type = "",
-  notes = c("minimal", "technical", "executive")
+  notes = c("minimal", "technical")
 )
 }
 \arguments{

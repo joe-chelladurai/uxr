@@ -10,7 +10,7 @@
 #'
 #'
 #'
-paired_t_test <- function(x, y, ...) {
+t_test_paired <- function(x, y, ...) {
   lower_ci <- upper_ci <- X1 <- X2 <- NULL
 
   result <- stats::t.test(x, y, paired = TRUE, ...)

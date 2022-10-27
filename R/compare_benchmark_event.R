@@ -22,7 +22,7 @@
 
 
 
-compare_benchmark_event <- function(benchmark, event, total, event_type = "", notes = c("minimal", "technical", "executive")) {
+compare_benchmark_event <- function(benchmark, event, total, event_type = "", notes = c("minimal", "technical")) {
 
   result <- 1 - sum(dbinom(event:total, prob = benchmark, size = total))
 
@@ -49,10 +49,6 @@ compare_benchmark_event <- function(benchmark, event, total, event_type = "", no
                      benchmark, "is",
                      result)
 
-  executive <-  paste("Executive: Based on the", event_type, paste0("rate of ", rate, ","),
-                         "the probability that this rate exceeds a benchmark of",
-                         benchmark, "is",
-                         result_percent)
 
   text_result <- match.arg(notes)
 
@@ -67,8 +63,7 @@ compare_benchmark_event <- function(benchmark, event, total, event_type = "", no
        probability = probability,
        text_result =  switch(text_result,
                              minimal = minimal,
-                             technical = technical,
-                             executive = executive)
+                             technical = technical)
   )
 
   cli::cli_text(result$text_result)

@@ -80,7 +80,11 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mtcars</span><span class="op">$</span><span class="va">id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq.int</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">get_concordant_discordant_pairs</span><span class="op">(</span><span class="va">mtcars</span>, id <span class="op">=</span> <span class="va">id</span>, var_1 <span class="op">=</span> <span class="va">vs</span>, var_2 <span class="op">=</span> <span class="va">am</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in get_concordant_discordant_pairs(mtcars, id = id, var_1 = vs,     var_2 = am):</span> unused arguments (var_1 = vs, var_2 = am)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   pairs                        type  n</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     a concordant: vs = 1 &amp; am = 1  7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     b discordant: vs = 1 &amp; am = 0  7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     c discordant: vs = 0 &amp; am = 1  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     d concordant: vs = 0 &amp; am = 0 12</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

@@ -46,9 +46,6 @@
     <loc>https://joe-chelladurai.github.io/uxr/reference/mean_ci_2.html</loc>
   </url>
   <url>
-    <loc>https://joe-chelladurai.github.io/uxr/reference/paired_t_test.html</loc>
-  </url>
-  <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/pipe.html</loc>
   </url>
   <url>
@@ -56,6 +53,9 @@
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/t_test.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/t_test_paired.html</loc>
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/uxr-package.html</loc>

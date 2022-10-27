@@ -8,10 +8,10 @@
 #' @return lower_ci, upper_ci
 #' @export
 #' @examples
-#' wald_ci(10, 12, 1.96)
-#' wald_ci(5, 7, 1.96)
+#' test_wald(10, 12, 1.96)
+#' test_wald(5, 7, 1.96)
 
-wald_ci <- function(success, total, ci_z) {
+test_wald <- function(success, total, ci_z) {
 
   p <- success/total
 

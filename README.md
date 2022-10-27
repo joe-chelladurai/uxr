@@ -33,7 +33,19 @@ remotes::install_github("joe-chelladurai/uxr")
 
 **Development Version**
 
- - `task_time_benchmark`
  - `t_test`
- - `paired_t_test`
+ - `t_test_paired`
+ - `compare_benchmark_event`
+ - `compare_benchmark_time`
+ - `get_concordant_discordant_pairs`
+ - `get_confidence_intervals_event`
 
+
+To do:
+ - `compare_means_within_groups` - two-sample t-test
+ - `compare_means_between_groups` - paired t-test
+ - `compare_rates_within_groups` - mcnemar exact test
+ - `compare_rates_between_groups` - n-1 two proportion test
+ 
+ - `compare_benchmark_score` 
+ 
