@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 The `compare_benchmark_*` functions provide ways to compare benchmark with data like events and times.
 
-## Compare an Event with a Benchmark
+## Compare Event with a Benchmark
 
 **Note**: This function is not yet released. You need to install the development version to use this function. To install the developmental version enter this in your console: `remotes::install_github("joe-chelladurai/uxr")`.
 
