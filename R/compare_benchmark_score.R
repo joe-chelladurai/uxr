@@ -1,13 +1,31 @@
 
 
-# data <- 73 + 19 * scale(rnorm(20)) # 73 = mean, 19 = sd
-# compare_benchmark_score(data, benchmark = 67, alpha = 0.5, tail = "one")
+#' Compare Score with a Benchmark
+#'
+#' @param data a column or vector of scores
+#' @param benchmark benchmark
+#' @param alpha alpha
+#' @param tail one-tailed or two-tailed test
+#' @param remove_missing TRUE/FALSE remove missing values? (default is TRUE)
+#' @return lower_ci, upper_ci, t, probability
+#' @export
+#' @importFrom stats pt sd na.omit
+#' @examples
+#' data <- 68 + 17 * scale(rnorm(20)) # 68 = mean, 17 = sd
+#' compare_benchmark_score(data, benchmark = 60, alpha = 0.5)
 
-compare_benchmark_score <- function(data, benchmark, alpha, tail = "one") {
 
-    mean <- mean(data)
-    sd <- sd(data)
-    n <- length(data)
+compare_benchmark_score <- function(data, benchmark, alpha, tail = "one", remove_missing = TRUE) {
+
+    mean <- mean(data, na.rm = remove_missing)
+    sd <- sd(data, na.rm = remove_missing)
+
+    if (remove_missing == TRUE) {
+      n <- length(na.omit(data))
+    } else {
+      n <- length(data)
+    }
+
     df <- n - 1
 
     t <- (mean - benchmark) / (sd / sqrt(n))
@@ -28,7 +46,7 @@ compare_benchmark_score <- function(data, benchmark, alpha, tail = "one") {
     lower_ci <- mean - margin_of_error
     upper_ci <- mean + margin_of_error
 
-    list(mean = mean,
+    data.frame(mean = mean,
          sd = sd,
          se = se,
          n = n,
@@ -51,5 +69,14 @@ compare_benchmark_score <- function(data, benchmark, alpha, tail = "one") {
 
 
 
+# length_na <- function(data, remove_missing) {
+#
+#   if (remove_missing == TRUE) {
+#     n <- length(na.omit(data))
+#   } else {
+#     n <- length(data)
+#   }
+#   return(n)
+# }
 
 
