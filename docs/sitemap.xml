@@ -22,10 +22,10 @@
     <loc>https://joe-chelladurai.github.io/uxr/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://joe-chelladurai.github.io/uxr/reference/adj_wald_ci.html</loc>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/compare_benchmark_event.html</loc>
   </url>
   <url>
-    <loc>https://joe-chelladurai.github.io/uxr/reference/compare_benchmark_event.html</loc>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/compare_benchmark_score.html</loc>
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/compare_benchmark_time.html</loc>
@@ -49,7 +49,10 @@
     <loc>https://joe-chelladurai.github.io/uxr/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>https://joe-chelladurai.github.io/uxr/reference/sample_xy.html</loc>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/test_wald.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/test_wald_adj.html</loc>
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/t_test.html</loc>
@@ -59,9 +62,6 @@
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/uxr-package.html</loc>
-  </url>
-  <url>
-    <loc>https://joe-chelladurai.github.io/uxr/reference/wald_ci.html</loc>
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/release-notes.html</loc>
