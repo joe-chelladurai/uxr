@@ -3,7 +3,7 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   compare_benchmarks: compare_benchmarks.html
-last_built: 2022-11-01T04:51Z
+last_built: 2022-11-01T05:12Z
 urls:
   reference: https://joe-chelladurai.github.io/uxr/reference
   article: https://joe-chelladurai.github.io/uxr/articles

@@ -84,3 +84,46 @@ compare_benchmark_time(benchmark = 60,
   t                 0.509  
   probability       0.314  
 ```
+
+
+## Compare Score with a Benchmark
+
+**Note**: This function is not yet released. You need to install the development version to use this function. To install the developmental version enter this in your console: `remotes::install_github("joe-chelladurai/uxr")`.
+
+```{r}
+#| echo: false
+t_dist_one_tailed <- function(t_score, degrees_of_freedom) {
+  pt(-abs(t_score), degrees_of_freedom)
+}
+```
+
+
+
+```{r}
+#| eval: false
+data <- 68 + 17 * scale(rnorm(20)) # 68 = mean, 17 = sd
+compare_benchmark_score(data, benchmark = 60, alpha = 0.5)
+```
+
+
+```{bash}
+#| eval: false
+── Compare Score with a Benchmark ──────────────────────────────────────────────────────────────
+We can be 98% confident that the true score is between 60 and 76
+  term                result  
+  mean                    68  
+  sd                      17  
+  se                3.801316  
+  n                       20  
+  df                      19  
+  alpha                  0.5  
+  probability          0.024  
+  tail                   one  
+  confidence           0.976  
+  margin_of_error          8  
+  t                    2.105  
+  lower_ci                60  
+  upper_ci                76  
+```
+
+
