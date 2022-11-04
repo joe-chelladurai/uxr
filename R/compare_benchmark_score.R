@@ -9,6 +9,7 @@
 #' @param remove_missing TRUE/FALSE remove missing values? (default is TRUE)
 #' @return lower_ci, upper_ci, t, probability
 #' @export
+#' @importFrom huxtable position map_align print_screen by_cols as_hux
 #' @importFrom stats pt sd na.omit
 #' @examples
 #' data <- 68 + 17 * scale(rnorm(20)) # 68 = mean, 17 = sd
@@ -76,24 +77,24 @@ compare_benchmark_score <- function(data, benchmark, alpha, tail = "one", remove
 
     cli::cli_text(result$text_output)
 
-    result2 <- result |>
+    result_table <- result |>
       t() |>
       data.frame() |>
       tibble::rownames_to_column("term") |>
       data.frame() |>
       dplyr::rename(result = t.result.) |>
-      huxtable::as_hux()
+      as_hux()
 
-    huxtable::position(result2) <- "left"
+    huxtable::position(result_table) <- "left"
 
-    result3 <- result2 |> dplyr::filter(!stringr::str_detect(term, "text_output"))
-    result3 <- huxtable::map_align(result3, huxtable::by_cols("left", "right"))
+    result_print <- result_table |> dplyr::filter(!stringr::str_detect(term, "text_output"))
+    result_print <- map_align(result_print, by_cols("left", "right"))
 
-    huxtable::print_screen(result3, colnames = FALSE)
+    print_screen(result_print, colnames = FALSE)
 
-    result4 <- data.frame(result2)
+    result_output <- data.frame(result_table)
 
-    return(invisible(result4))
+    return(invisible(result_output))
   }
 
 

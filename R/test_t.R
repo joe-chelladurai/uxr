@@ -10,11 +10,11 @@
 #' @export
 #' @examples
 #'
-#' t_test(mtcars$mpg, mtcars$am)
+#' test_t(mtcars$mpg, mtcars$am)
 
 
 
-t_test <- function(x, y, ...) {
+test_t <- function(x, y, ...) {
 
   lower_ci <- upper_ci <- X1 <- X2 <- NULL
 
@@ -53,3 +53,4 @@ t_test <- function(x, y, ...) {
   result3 <- data.frame(result2)
   return(invisible(result3))
 }
+

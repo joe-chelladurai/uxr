@@ -10,6 +10,7 @@
 #' @return list of event rate, probability, notes
 #' @export
 #' @import magrittr
+#' @importFrom huxtable position map_align print_screen by_cols as_hux
 #' @importFrom stringr str_detect
 #' @importFrom stats dbinom
 #' @importFrom scales percent
@@ -68,24 +69,24 @@ compare_benchmark_event <- function(benchmark, event, total, event_type = "", no
 
   cli::cli_text(result$text_result)
 
-  result2 <- result |>
+  result_table <- result |>
     t() |>
     data.frame() |>
     tibble::rownames_to_column("term") |>
     data.frame() |>
     dplyr::rename(result = t.result.) |>
-    huxtable::as_hux()
+    as_hux()
 
-  huxtable::position(result2) <- "left"
+  huxtable::position(result_table) <- "left"
 
-  result3 <- result2 |> dplyr::filter(!stringr::str_detect(term, "text_result"))
-  result3 <- huxtable::map_align(result3, huxtable::by_cols("left", "right"))
+  result_print <- result_table |> dplyr::filter(!stringr::str_detect(term, "text_result"))
+  result_print <- map_align(result_print, by_cols("left", "right"))
 
-  huxtable::print_screen(result3, colnames = FALSE)
+  print_screen(result_print, colnames = FALSE)
 
-  result4 <- data.frame(result2)
+  result_output <- data.frame(result_table)
 
-  return(invisible(result4))
+  return(invisible(result_output))
 
 
 }

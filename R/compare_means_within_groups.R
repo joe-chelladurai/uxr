@@ -6,6 +6,7 @@
 #' @param x x
 #' @param y y
 #' @param ... other arguments passed to paired t-test
+#' @importFrom huxtable position map_align print_screen by_cols as_hux
 #' @return results
 #' @export
 
@@ -13,7 +14,7 @@ compare_means_within_groups <- function(x, y, ...) {
   lower_ci <- upper_ci <- X1 <- X2 <- NULL
 
   result <- stats::t.test(x, y, paired = TRUE, ...)
-  result2 <- result$estimate |>
+  result_table <- result$estimate |>
     data.frame() |>
     t() |>
     data.frame()
@@ -35,7 +36,7 @@ compare_means_within_groups <- function(x, y, ...) {
 
   cli::cli_h1("Compare Means Within Groups")
 
-  result2 <- result2 |>
+  result_table <- result_table |>
     dplyr::mutate(
       t = round(result$statistic, 2),
       p = scales::pvalue(result$p.value),
@@ -49,12 +50,12 @@ compare_means_within_groups <- function(x, y, ...) {
     data.frame()
 
 
-  result2 <- result2 |> huxtable::as_hux()
-  huxtable::position(result2) <- "left"
-  result2 <- huxtable::map_align(result2, huxtable::by_cols("left", "right"))
-  huxtable::print_screen(result2, colnames = FALSE)
-  result3 <- data.frame(result2)
-  return(invisible(result3))
+  result_table <- result_table |> as_hux()
+  huxtable::position(result_table) <- "left"
+  result_table <- map_align(result_table, by_cols("left", "right"))
+  print_screen(result_table, colnames = FALSE)
+  result_output <- data.frame(result_table)
+  return(invisible(result_output))
 }
 
 

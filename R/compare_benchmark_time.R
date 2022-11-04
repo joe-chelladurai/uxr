@@ -8,6 +8,7 @@
 #' @return lower_ci, upper_ci, t, probability
 #' @export
 #' @importFrom stats pt sd
+#' @importFrom huxtable position map_align print_screen by_cols as_hux
 #' @examples
 #' compare_benchmark_time(time = c(60, 53, 70, 42, 62, 43, 81),
 #'                        benchmark = 60,
@@ -37,27 +38,27 @@ compare_benchmark_time <- function(benchmark, time, alpha, remove_missing = FALS
        probability = probability)
 
 
-  result2 <- result |>
+  result_table <- result |>
     t() |>
     data.frame() |>
     tibble::rownames_to_column("term") |>
     data.frame() |>
-    huxtable::as_hux()
+    as_hux()
 
-  huxtable::position(result2) <- "left"
+  huxtable::position(result_table) <- "left"
 
 
   cli::cli_h1("Compare Time with a Benchmark")
 
 
-  result3 <- result2 |> dplyr::filter(!stringr::str_detect(term, "text_result"))
-  result3 <- huxtable::map_align(result3, huxtable::by_cols("left", "right"))
+  result_print <- result_table |> dplyr::filter(!stringr::str_detect(term, "text_result"))
+  result_print <- map_align(result_print, by_cols("left", "right"))
 
-  huxtable::print_screen(result3, colnames = FALSE)
+  print_screen(result_print, colnames = FALSE)
 
-  result4 <- data.frame(result2)
+  result_output <- data.frame(result_table)
 
-  return(invisible(result4))
+  return(invisible(result_output))
 
 }
 

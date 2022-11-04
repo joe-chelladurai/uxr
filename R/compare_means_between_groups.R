@@ -2,38 +2,53 @@
 
 #' Compare Means Between Groups
 #'
-#' @param x x
-#' @param y y
+#' @param data data
+#' @param variable variable
+#' @param grouping_variable Group
+#' @param groups Specify groups from grouping variable
+#' @param equal_variances Specify whether variances are equal (TRUE/FALSE)
 #' @return results
+#' @importFrom huxtable position map_align print_screen by_cols as_hux
+#' @importFrom dplyr filter rename mutate
+#' @importFrom stats as.formula
 #' @export
 #' @examples
-#' data <- data.frame(x = c(rnorm(1:30)), y = c(rnorm(1:30)))
-#' compare_means_between_groups(data$x, data$y)
+#' compare_means_between_groups(mtcars, mpg, cyl, c(4, 6))
 
 
-compare_means_between_groups <- function(x, y, equal_variances = FALSE) {
+compare_means_between_groups <- function(data, variable, grouping_variable, groups, equal_variances = FALSE) {
 
   lower_ci <- upper_ci <- X1 <- X2 <- NULL
 
-  if (equal_variances == TRUE) {
-    result <- stats::t.test(x, y, var.equal = TRUE)
-  } else {
-    result <- stats::t.test(x, y, var.equal = FALSE)
+
+  lhs <- deparse(substitute(variable))
+  rhs <- deparse(substitute(grouping_variable))
+
+  formula <- as.formula(paste(lhs, "~", rhs))
+
+
+  data <- data %>% # Note: needs %>% pipe
+    filter({{grouping_variable}} %in% groups)
+
+  if(equal_variances == TRUE) {
+    result <- stats::t.test(formula, data = data, var.equal = TRUE)
+  } else if(equal_variances == FALSE) {
+    result <- stats::t.test(formula, data = data, var.equal = FALSE)
   }
 
 
 
 
-  result2 <- result$estimate |> data.frame()  |> t() |> data.frame()
+  result_table <- result$estimate |> data.frame()  |> t() |> data.frame()
 
-  x_name <- deparse(substitute(x))
-  x_name <- sub(".*\\$", "", x_name)
+  #x_name <- deparse(substitute(x))
+  #x_name <- sub(".*\\$", "", x_name)
 
-  y_name <- deparse(substitute(y))
-  y_name <- sub(".*\\$", "", y_name)
+  # y_name <- deparse(substitute(y))
+  # y_name <- sub(".*\\$", "", y_name)
 
-  names(result2)[1] <- x_name
-  names(result2)[2] <- y_name
+  #names(result_table)[1] <- x_name
+  #names(result_table)[2] <- y_name
 
   ci <-result$conf.int  |> t() |> data.frame() |> dplyr::rename(lower_ci = X1,
                                                                 upper_ci = X2) |> dplyr::mutate(lower_ci = round(lower_ci, 2),
@@ -42,7 +57,7 @@ compare_means_between_groups <- function(x, y, equal_variances = FALSE) {
 
   cli::cli_h1(result$method)
 
-  result2 <- result2 |>
+  result_table <- result_table |>
     dplyr::mutate(t = round(result$statistic, 2),
                   p = scales::pvalue(result$p.value),
                   df = round(result$parameter),
@@ -51,12 +66,19 @@ compare_means_between_groups <- function(x, y, equal_variances = FALSE) {
     t() |> data.frame() |> tibble::rownames_to_column(" ") |> data.frame()
 
 
-  result2 <- result2 |> huxtable::as_hux()
-  huxtable::position(result2) <- "left"
-  result2 <- huxtable::map_align(result2, huxtable::by_cols("left", "right"))
-  huxtable::print_screen(result2, colnames =FALSE)
-  result3 <- data.frame(result2)
-  return(invisible(result3))
+  result_table <- result_table |> as_hux()
+  huxtable::position(result_table) <- "left"
+  result_table <- map_align(result_table, by_cols("left", "right"))
+  print_screen(result_table, colnames =FALSE)
+  result_output <- data.frame(result_table)
+  return(invisible(result_output))
 }
+
+
+
+
+
+
+
 
 
