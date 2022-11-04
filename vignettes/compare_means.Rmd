@@ -48,3 +48,11 @@ compare_means_within_groups(data$task1, data$task2)
 
 ```
 
+## Compare Means Between Groups
+
+This uses an independent samples t-test (Welch's Test) TO DO: Add Student's test
+
+```{r}
+compare_means_between_groups()
+```
+
