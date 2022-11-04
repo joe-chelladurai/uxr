@@ -34,6 +34,9 @@
     <loc>https://joe-chelladurai.github.io/uxr/reference/compare_benchmark_time.html</loc>
   </url>
   <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/compare_means_between_groups.html</loc>
+  </url>
+  <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/compare_means_within_groups.html</loc>
   </url>
   <url>
@@ -55,16 +58,19 @@
     <loc>https://joe-chelladurai.github.io/uxr/reference/pipe.html</loc>
   </url>
   <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/sample_xy.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/test_t.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/test_t_paired.html</loc>
+  </url>
+  <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/test_wald.html</loc>
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/test_wald_adj.html</loc>
-  </url>
-  <url>
-    <loc>https://joe-chelladurai.github.io/uxr/reference/t_test.html</loc>
-  </url>
-  <url>
-    <loc>https://joe-chelladurai.github.io/uxr/reference/t_test_paired.html</loc>
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/uxr-package.html</loc>

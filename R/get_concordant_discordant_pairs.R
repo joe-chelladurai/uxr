@@ -4,8 +4,8 @@
 #'
 #' @param .data = data
 #' @param id = id column
-#' @param var_1 variable 1
-#' @param var_2 variable 2
+#' @param x variable 1
+#' @param y variable 2
 #' @return a data frame
 #' @importFrom tidyr pivot_longer pivot_wider
 #' @importFrom dplyr mutate case_when count select
@@ -15,29 +15,29 @@
 #' @export
 #' @examples
 #' mtcars$id <- seq.int(nrow(mtcars))
-#' get_concordant_discordant_pairs(mtcars, id = id, var_1 = vs, var_2 = am)
+#' get_concordant_discordant_pairs(mtcars, id = id, x = vs, y = am)
 
 
 
-get_concordant_discordant_pairs <- function(.data, id, var_1, var_2) {
+get_concordant_discordant_pairs <- function(.data, id, x, y) {
 
-  var_1_name <- deparse(substitute(var_1))
-  var_2_name <- deparse(substitute(var_2))
+  x_name <- deparse(substitute(x))
+  y_name <- deparse(substitute(y))
 
   table <-   .data %>% pivot_longer(cols = -{{id}}) %>%
     mutate(value = as.numeric(factor(value))-1) %>%
     pivot_wider() %>%
     mutate(pairs = case_when(
-      {{var_1}} > {{var_2}} ~ "b",
-      {{var_1}} < {{var_2}} ~ "c",
-      {{var_1}} + {{var_2}} == 2 ~ "a",
-      {{var_1}} + {{var_2}} == 0 ~ "d")) %>%
-    mutate(type = case_when(pairs == "a" ~ "concordant: var_1 = 1 & var_2 = 1",
-                            pairs == "d" ~ "concordant: var_1 = 0 & var_2 = 0",
-                            pairs == "b" ~ "discordant: var_1 = 1 & var_2 = 0",
-                            pairs == "c" ~ "discordant: var_1 = 0 & var_2 = 1")) %>%
-    mutate(type = str_replace(type, 'var_1', var_1_name)) %>%
-    mutate(type = str_replace(type, 'var_2', var_2_name)) %>%
+      {{x}} > {{y}} ~ "b",
+      {{x}} < {{y}} ~ "c",
+      {{x}} + {{y}} == 2 ~ "a",
+      {{x}} + {{y}} == 0 ~ "d")) %>%
+    mutate(type = case_when(pairs == "a" ~ "concordant: x = 1 & y = 1",
+                            pairs == "d" ~ "concordant: x = 0 & y = 0",
+                            pairs == "b" ~ "discordant: x = 1 & y = 0",
+                            pairs == "c" ~ "discordant: x = 0 & y = 1")) %>%
+    mutate(type = str_replace(type, 'x', x_name)) %>%
+    mutate(type = str_replace(type, 'y', y_name)) %>%
     count(pairs, type) %>% data.frame()
 
 
