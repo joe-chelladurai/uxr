@@ -15,7 +15,7 @@
 #' @importFrom stats dbinom
 #' @importFrom scales percent
 #' @examples
-#' compare_benchmark_event(benchmark = 0.7,
+#' benchmark_event(benchmark = 0.7,
 #'                      event = 10,
 #'                      total = 12,
 #'                      event_type = "success",
@@ -23,7 +23,7 @@
 
 
 
-compare_benchmark_event <- function(benchmark, event, total, event_type = "", notes = c("minimal", "technical")) {
+benchmark_event <- function(benchmark, event, total, event_type = "", notes = c("minimal", "technical")) {
 
   result <- 1 - sum(dbinom(event:total, prob = benchmark, size = total))
 

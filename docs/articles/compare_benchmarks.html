@@ -71,8 +71,8 @@
 
     
     
-<p>The <code>compare_benchmark_*</code> functions provide ways to
-compare benchmark with data like events and times.</p>
+<p>The <code>benchmark_*</code> functions provide ways to compare
+benchmark with data like events and times.</p>
 <div class="section level2">
 <h2 id="compare-event-with-a-benchmark">Compare Event with a Benchmark<a class="anchor" aria-label="anchor" href="#compare-event-with-a-benchmark"></a>
 </h2>
@@ -84,7 +84,7 @@ developmental version enter this in your console:
 <p><strong>Example:</strong></p>
 <p>10 out of 14 people successfully completed a task on an interface.
 What is the probability of success above a benchmark of 80%?</p>
-<p>You can use the <code><a href="../reference/compare_benchmark_event.html">compare_benchmark_event()</a></code> function to
+<p>You can use the <code>compare_benchmark_event()</code> function to
 answer this question. This function requires a benchmark value, number
 of events (in this case successful events), and the total number of
 events. To pass a <code>benchmark</code> value of 80%, you’ll need to
@@ -97,19 +97,17 @@ potential users, given a representative sample.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">uxr</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compare_benchmark_event.html">compare_benchmark_event</a></span><span class="op">(</span>benchmark <span class="op">=</span> <span class="fl">0.80</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/benchmark_event.html">benchmark_event</a></span><span class="op">(</span>benchmark <span class="op">=</span> <span class="fl">0.80</span>,</span>
 <span>                        event <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>                        total <span class="op">=</span> <span class="fl">12</span>,</span>
 <span>                        event_type <span class="op">=</span> <span class="st">"success"</span>,</span>
 <span>                        notes <span class="op">=</span> <span class="st">"minimal"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">--</span> Compare Event Rate with a Benchmark---------------------------------------------</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Executive:</span> Based on the success rate of 84%, the probability that this rate exceeds</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">a</span> benchmark of 80% is 44%</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">term</span>           result  </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">event</span>              10  </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">total</span>              12  </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">benchmark</span>         80%  </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">probability</span>     0.442  </span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">term</span>           result  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">event</span>              10  </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">total</span>              12  </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">benchmark</span>         80%  </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">probability</span>     0.442  </span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="compare-time-with-a-benchmark">Compare Time with a Benchmark<a class="anchor" aria-label="anchor" href="#compare-time-with-a-benchmark"></a>
@@ -122,12 +120,12 @@ developmental version enter this in your console:
 <p>7 people successfully took 60, 53, 70, 42, 62, 43, and 81 seconds to
 complete a task. What is the probability that time taken to complete
 this task is above a time of 60 seconds?</p>
-<p>You can use the <code><a href="../reference/compare_benchmark_time.html">compare_benchmark_time()</a></code> function to
+<p>You can use the <code>compare_benchmark_time()</code> function to
 answer this question. This function requires a benchmark value and a
 list of times. To pass a <code>benchmark</code> value of 60s, you can
 specify this as 60.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compare_benchmark_time.html">compare_benchmark_time</a></span><span class="op">(</span>benchmark <span class="op">=</span> <span class="fl">60</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/benchmark_time.html">benchmark_time</a></span><span class="op">(</span>benchmark <span class="op">=</span> <span class="fl">60</span>,</span>
 <span>                       time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">60</span>, <span class="fl">53</span>, <span class="fl">70</span>, <span class="fl">42</span>, <span class="fl">62</span>, <span class="fl">43</span>, <span class="fl">81</span><span class="op">)</span>,</span>
 <span>                       alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">--</span> Compare Time with a Benchmark <span class="at">------------------------------------------------------------</span></span>
@@ -146,7 +144,7 @@ developmental version enter this in your console:
 <code>remotes::install_github("joe-chelladurai/uxr")</code>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fl">68</span> <span class="op">+</span> <span class="fl">17</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span> <span class="co"># 68 = mean, 17 = sd</span></span>
-<span><span class="fu"><a href="../reference/compare_benchmark_score.html">compare_benchmark_score</a></span><span class="op">(</span><span class="va">data</span>, benchmark <span class="op">=</span> <span class="fl">60</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/benchmark_score.html">benchmark_score</a></span><span class="op">(</span><span class="va">data</span>, benchmark <span class="op">=</span> <span class="fl">60</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">──</span> Compare Score with a Benchmark ──────────────────────────────────────────────────────────────</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">We</span> can be 98% confident that the true score is between 60 and 76</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">term</span>                result  </span>

@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The `compare_benchmark_*` functions provide ways to compare benchmark with data like events and times.
+The `benchmark_*` functions provide ways to compare benchmark with data like events and times.
 
 ## Compare Event with a Benchmark
 
@@ -36,7 +36,7 @@ library(uxr)
 
 ```{r}
 #| eval: false
-compare_benchmark_event(benchmark = 0.80,
+benchmark_event(benchmark = 0.80,
                         event = 10,
                         total = 12,
                         event_type = "success",
@@ -47,8 +47,6 @@ compare_benchmark_event(benchmark = 0.80,
 #| eval: false
 
 -- Compare Event Rate with a Benchmark---------------------------------------------
-Executive: Based on the success rate of 84%, the probability that this rate exceeds
-a benchmark of 80% is 44%
   term           result  
   event              10  
   total              12  
@@ -70,7 +68,7 @@ You can use the `compare_benchmark_time()` function to answer this question. Thi
 
 ```{r}
 #| eval: false
-compare_benchmark_time(benchmark = 60,
+benchmark_time(benchmark = 60,
                        time = c(60, 53, 70, 42, 62, 43, 81),
                        alpha = 0.05)
 ```
@@ -102,7 +100,7 @@ t_dist_one_tailed <- function(t_score, degrees_of_freedom) {
 ```{r}
 #| eval: false
 data <- 68 + 17 * scale(rnorm(20)) # 68 = mean, 17 = sd
-compare_benchmark_score(data, benchmark = 60, alpha = 0.5)
+benchmark_score(data, benchmark = 60, alpha = 0.5)
 ```
 
 

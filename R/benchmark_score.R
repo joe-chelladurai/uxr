@@ -13,10 +13,10 @@
 #' @importFrom stats pt sd na.omit
 #' @examples
 #' data <- 68 + 17 * scale(rnorm(20)) # 68 = mean, 17 = sd
-#' compare_benchmark_score(data, benchmark = 60, alpha = 0.5)
+#' benchmark_score(data, benchmark = 60, alpha = 0.5)
 
 
-compare_benchmark_score <- function(data, benchmark, alpha, tail = "one", remove_missing = TRUE) {
+benchmark_score <- function(data, benchmark, alpha, tail = "one", remove_missing = TRUE) {
 
     mean <- mean(data, na.rm = remove_missing)
     sd <- sd(data, na.rm = remove_missing)

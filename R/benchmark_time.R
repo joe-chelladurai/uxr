@@ -10,12 +10,12 @@
 #' @importFrom stats pt sd
 #' @importFrom huxtable position map_align print_screen by_cols as_hux
 #' @examples
-#' compare_benchmark_time(time = c(60, 53, 70, 42, 62, 43, 81),
+#' benchmark_time(time = c(60, 53, 70, 42, 62, 43, 81),
 #'                        benchmark = 60,
 #'                        alpha = 0.05)
 
 
-compare_benchmark_time <- function(benchmark, time, alpha, remove_missing = FALSE) {
+benchmark_time <- function(benchmark, time, alpha, remove_missing = FALSE) {
 
   n <- length(time)
   t <- (log(benchmark) - mean(log(time)))/(sd(log(time))/sqrt(n))
