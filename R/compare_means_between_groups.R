@@ -7,14 +7,23 @@
 #' @return results
 #' @export
 #' @examples
-#'
+#' data <- data.frame(x = c(rnorm(1:30)), y = c(rnorm(1:30)))
+#' compare_means_between_groups(data$x, data$y)
 
 
-compare_means_between_groups <- function(x, y) {
+compare_means_between_groups <- function(x, y, equal_variances = FALSE) {
 
   lower_ci <- upper_ci <- X1 <- X2 <- NULL
 
-  result <- stats::t.test(x, y)
+  if (equal_variances == TRUE) {
+    result <- stats::t.test(x, y, var.equal = TRUE)
+  } else {
+    result <- stats::t.test(x, y, var.equal = FALSE)
+  }
+
+
+
+
   result2 <- result$estimate |> data.frame()  |> t() |> data.frame()
 
   x_name <- deparse(substitute(x))
@@ -49,3 +58,5 @@ compare_means_between_groups <- function(x, y) {
   result3 <- data.frame(result2)
   return(invisible(result3))
 }
+
+

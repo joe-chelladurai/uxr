@@ -50,9 +50,57 @@ compare_means_within_groups(data$task1, data$task2)
 
 ## Compare Means Between Groups
 
-This uses an independent samples t-test (Welch's Test) TO DO: Add Student's test
+
 
 ```{r}
-compare_means_between_groups()
+# Example data
+set.seed(1)
+data <- data.frame(x = c(rnorm(1:30)), y = c(rnorm(1:30)))
+
+head(data)
+```
+### Student's Test
+```{r}
+#| eval: false
+compare_means_between_groups(data$x, data$y, equal_variances = TRUE)
+```
+```{bash}
+#| eval: false
+
+──  Two Sample t-test ─────────────────────────────────────────────────────────────────────────────────────────
+  X.           result.estimate  
+  x                  0.1616584  
+  y                  0.1134107  
+  t                       0.17  
+  p                      0.867  
+  df                        58  
+  ci_level                0.95  
+  lower_ci               -0.53  
+  upper_ci                0.62  
+
+```
+
+
+### Welsch Test
+
+```{r}
+#| eval: false
+compare_means_between_groups(data$x, data$y, equal_variances = FALSE)
+```
+
+```{bash}
+#| eval: false
+
+── Welch Two Sample t-test ────────────────────────────────────────────────────────────────────────────────────
+  X.           result.estimate  
+  x                  0.1616584  
+  y                  0.1134107  
+  t                       0.17  
+  p                      0.867  
+  df                        55  
+  ci_level                0.95  
+  lower_ci               -0.53  
+  upper_ci                0.62  
+
 ```
 
