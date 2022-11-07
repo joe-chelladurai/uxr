@@ -1,8 +1,8 @@
 ---
-title: "compare_rates"
+title: "Compare Rates"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{compare_rates}
+  %\VignetteIndexEntry{Compare Rates}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,8 +16,8 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(uxr)
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(tidyr))
+library(dplyr)
+library(tidyr)
 ```
 
 
