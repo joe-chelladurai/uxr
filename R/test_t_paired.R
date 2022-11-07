@@ -8,8 +8,7 @@
 #' @return results
 #' @export
 #'
-#'
-#'
+
 test_t_paired <- function(x, y, ...) {
   lower_ci <- upper_ci <- X1 <- X2 <- NULL
 

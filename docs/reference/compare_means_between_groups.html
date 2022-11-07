@@ -26,6 +26,7 @@
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/compare_benchmarks.html">Compare with Benchmarks</a>
     <a class="dropdown-item" href="../articles/compare_means.html">Compare Means</a>
+    <a class="dropdown-item" href="../articles/compare_rates.html">compare_rates</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -90,7 +91,17 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">compare_means_between_groups</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">mpg</span>, <span class="va">cyl</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in data %&gt;% filter({    {        grouping_variable    }} %in% groups):</span> could not find function "%&gt;%"</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Welch Two Sample t-test</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   X.                result.estimate  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean.in.group.4          26.66364  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean.in.group.6          19.74286  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   t                            4.72  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   p                          &lt;0.001  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   df                             13  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ci_level                     0.95  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   lower_ci                     3.75  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   upper_ci                    10.09  </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

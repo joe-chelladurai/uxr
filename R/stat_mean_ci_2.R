@@ -16,7 +16,7 @@
 #' mean_ci_2(c(2, 4, 6, 8), 1.96)
 
 
-mean_ci_2 <- function(x, z) {
+stat_mean_ci_2 <- function(x, z) {
 
   n <- length(x)
   p <- 0.5 # percentile (0.5) for the median

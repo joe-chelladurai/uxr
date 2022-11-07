@@ -88,14 +88,6 @@ benchmark_time(benchmark = 60,
 
 **Note**: This function is not yet released. You need to install the development version to use this function. To install the developmental version enter this in your console: `remotes::install_github("joe-chelladurai/uxr")`.
 
-```{r}
-#| echo: false
-t_dist_one_tailed <- function(t_score, degrees_of_freedom) {
-  pt(-abs(t_score), degrees_of_freedom)
-}
-```
-
-
 
 ```{r}
 #| eval: false

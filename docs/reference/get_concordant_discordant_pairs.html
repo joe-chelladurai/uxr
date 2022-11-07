@@ -26,6 +26,7 @@
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/compare_benchmarks.html">Compare with Benchmarks</a>
     <a class="dropdown-item" href="../articles/compare_means.html">Compare Means</a>
+    <a class="dropdown-item" href="../articles/compare_rates.html">compare_rates</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -81,7 +82,11 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mtcars</span><span class="op">$</span><span class="va">id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq.int</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">get_concordant_discordant_pairs</span><span class="op">(</span><span class="va">mtcars</span>, id <span class="op">=</span> <span class="va">id</span>, x <span class="op">=</span> <span class="va">vs</span>, y <span class="op">=</span> <span class="va">am</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .data %&gt;% pivot_longer(cols = -{    {        id    }}) %&gt;% mutate(value = as.numeric(factor(value)) - 1) %&gt;% pivot_wider() %&gt;%     mutate(pairs = case_when({        {            x        }    } &gt; {        {            y        }    } ~ "b", {        {            x        }    } &lt; {        {            y        }    } ~ "c", {        {            x        }    } + {        {            y        }    } == 2 ~ "a", {        {            x        }    } + {        {            y        }    } == 0 ~ "d")) %&gt;% mutate(type = case_when(pairs == "a" ~     "concordant: x = 1 &amp; y = 1", pairs == "d" ~ "concordant: x = 0 &amp; y = 0",     pairs == "b" ~ "discordant: x = 1 &amp; y = 0", pairs == "c" ~         "discordant: x = 0 &amp; y = 1")) %&gt;% mutate(type = str_replace(type,     "x", x_name)) %&gt;% mutate(type = str_replace(type, "y", y_name)) %&gt;%     count(pairs, type) %&gt;% data.frame():</span> could not find function "%&gt;%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   pairs                        type  n</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     a concordant: vs = 1 &amp; am = 1  7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     b discordant: vs = 1 &amp; am = 0  7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     c discordant: vs = 0 &amp; am = 1  6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     d concordant: vs = 0 &amp; am = 0 12</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

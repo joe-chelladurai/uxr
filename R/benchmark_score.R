@@ -32,9 +32,9 @@ benchmark_score <- function(data, benchmark, alpha, tail = "one", remove_missing
     t <- (mean - benchmark) / (sd / sqrt(n))
 
     if (tail == "one") {
-      probability <- t_dist_one_tailed(t, df)
+      probability <- dist_t(t, df, tail = "one")
       } else if (tail == "two") {
-        probability <- t_dist_two_tailed(t, df)
+        probability <- dist_t(t, df, tail = "two")
         } else {
           stop("arguments for tail must be 'one' or 'two'")
           }

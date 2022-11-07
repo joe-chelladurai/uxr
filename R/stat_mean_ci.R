@@ -14,7 +14,7 @@
 #' mean_ci(c(2, 4, 6, 8), 1.96)
 
 
-mean_ci <- function(x, alpha) {
+stat_mean_ci <- function(x, alpha) {
   log <- log(x)
 
   mean <- mean(log)

@@ -4,7 +4,8 @@ pkgdown_sha: ~
 articles:
   compare_benchmarks: compare_benchmarks.html
   compare_means: compare_means.html
-last_built: 2022-11-04T22:43Z
+  compare_rates: compare_rates.html
+last_built: 2022-11-07T03:19Z
 urls:
   reference: https://joe-chelladurai.github.io/uxr/reference
   article: https://joe-chelladurai.github.io/uxr/articles

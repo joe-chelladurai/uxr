@@ -10,6 +10,9 @@
     <loc>https://joe-chelladurai.github.io/uxr/articles/compare_means.html</loc>
   </url>
   <url>
+    <loc>https://joe-chelladurai.github.io/uxr/articles/compare_rates.html</loc>
+  </url>
+  <url>
     <loc>https://joe-chelladurai.github.io/uxr/articles/index.html</loc>
   </url>
   <url>
@@ -40,6 +43,9 @@
     <loc>https://joe-chelladurai.github.io/uxr/reference/compare_means_within_groups.html</loc>
   </url>
   <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/dist_t.html</loc>
+  </url>
+  <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/get_concordant_discordant_pairs.html</loc>
   </url>
   <url>
@@ -49,16 +55,19 @@
     <loc>https://joe-chelladurai.github.io/uxr/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://joe-chelladurai.github.io/uxr/reference/mean_ci.html</loc>
-  </url>
-  <url>
-    <loc>https://joe-chelladurai.github.io/uxr/reference/mean_ci_2.html</loc>
-  </url>
-  <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/pipe.html</loc>
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/sample_xy.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/stat_mean_ci.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/stat_mean_ci_2.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/test_n_1_two_prop.html</loc>
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/test_t.html</loc>
