@@ -38,6 +38,8 @@ data |>
 ```
 If expected count less than 1, use fisher's test, else use test_n_minus_1_two_prop
 
+
+
 ```{r}
 chisq.test(data$design, data$rate)$expected |> data.frame()
 ```
