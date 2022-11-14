@@ -19,7 +19,7 @@
 #' test_n_1_prop(data, design, rate, z = 1.645)
 
 
-test_n_1_prop <- function(data, x, y, z) {
+test_n_1_prop <- function(data, x, y, z = 1.96) {
 
   prop_tab <- data |> group_by({{x}}, {{y}}) |>
     count() |> ungroup() |>
