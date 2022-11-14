@@ -21,26 +21,16 @@ library(tidyr)
 ```
 
 
+
 ```{r}
 design = c("A","B")
-complete = c(3, 1)
-incomplete = c(1, 0)
+complete = c(37, 22)
+incomplete = c(418, 416)
 data <- data.frame(design, complete, incomplete)
-data <- data %>% pivot_longer(!design, names_to = "rate", values_to = "n") %>% tidyr::uncount(n)
+data <- data |> pivot_longer(!design, names_to = "rate", values_to = "n") |>  tidyr::uncount(n)
+test_n_1_prop(data, design, rate, z = 1.645) |> as_tibble() |> 
+  mutate(across(where(is.numeric), round, 7)) |> t()
 ```
 
 
-Confidence interval for difference between proportions (Sauro & Lewis, 2016; Agresti & Caffo, 2000)
-
-```{r}
-data |> 
-  test_n_1_two_prop(design, rate, "complete", 1.96) 
-```
-If expected count less than 1, use fisher's test, else use test_n_minus_1_two_prop
-
-
-
-```{r}
-chisq.test(data$design, data$rate)$expected |> data.frame()
-```
 
