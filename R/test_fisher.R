@@ -1,13 +1,13 @@
 
 
 
-design = c("A","B")
-complete = c(11, 5)
-incomplete = c(1, 5)
-data <- data.frame(design, complete, incomplete)
-data <- data |> pivot_longer(!design, names_to = "rate", values_to = "n") |>
-  tidyr::uncount(n)
-
+# design = c("A","B")
+# complete = c(11, 5)
+# incomplete = c(1, 5)
+# data <- data.frame(design, complete, incomplete)
+# data <- data |> pivot_longer(!design, names_to = "rate", values_to = "n") |>
+#   tidyr::uncount(n)
+# test_fisher(data, design, rate)
 
 
 test_fisher <- function(data, x, y) {
@@ -21,4 +21,4 @@ test_fisher <- function(data, x, y) {
              )
 }
 
-test_fisher(data, design, rate)
+

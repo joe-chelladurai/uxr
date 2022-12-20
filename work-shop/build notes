@@ -1,0 +1,309 @@
+==> devtools::check(document = FALSE)
+
+── Building ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── uxr ──
+Setting env vars:
+• CFLAGS    : -Wall -pedantic -fdiagnostics-color=always
+• CXXFLAGS  : -Wall -pedantic -fdiagnostics-color=always
+• CXX11FLAGS: -Wall -pedantic -fdiagnostics-color=always
+• CXX14FLAGS: -Wall -pedantic -fdiagnostics-color=always
+• CXX17FLAGS: -Wall -pedantic -fdiagnostics-color=always
+• CXX20FLAGS: -Wall -pedantic -fdiagnostics-color=always
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+✔  checking for file 'C:\Users\Meshach\Documents\GitHub\uxr/DESCRIPTION' (362ms)
+─  preparing 'uxr': (2.1s)
+✔  checking DESCRIPTION meta-information ...
+─  checking for LF line-endings in source and make files and shell scripts (683ms)
+─  checking for empty or unneeded directories
+─  building 'uxr_0.1.2.tar.gz'
+
+── Checking ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── uxr ──
+Setting env vars:
+• _R_CHECK_CRAN_INCOMING_REMOTE_: FALSE
+• _R_CHECK_CRAN_INCOMING_       : FALSE
+• _R_CHECK_FORCE_SUGGESTS_      : FALSE
+• NOT_CRAN                      : true
+── R CMD check ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─  using log directory 'C:/Users/Meshach/Documents/GitHub/uxr.Rcheck' (394ms)
+─  using R version 4.2.1 (2022-06-23 ucrt)
+─  using platform: x86_64-w64-mingw32 (64-bit)
+─  using session charset: UTF-8
+─  using options '--no-manual --as-cran'
+✔  checking for file 'uxr/DESCRIPTION'
+─  checking extension type ... Package
+─  this is package 'uxr' version '0.1.2'
+─  package encoding: UTF-8
+✔  checking package namespace information
+✔  checking package dependencies (4.8s)
+✔  checking if this is a source package ...
+✔  checking if there is a namespace
+✔  checking for executable files (859ms)
+✔  checking for hidden files and directories ...
+✔  checking for portable file names
+✔  checking serialization versions
+✔  checking whether package 'uxr' can be installed (5.2s)
+✔  checking installed package size ...
+✔  checking package directory (415ms)
+N  checking for future file timestamps ...
+   unable to verify current time
+✔  checking DESCRIPTION meta-information (347ms)
+✔  checking top-level files
+✔  checking for left-over files
+✔  checking index information
+✔  checking package subdirectories
+✔  checking R files for non-ASCII characters ...
+✔  checking R files for syntax errors ...
+✔  checking whether the package can be loaded (1.1s)
+✔  checking whether the package can be loaded with stated dependencies (989ms)
+✔  checking whether the package can be unloaded cleanly (1000ms)
+✔  checking whether the namespace can be loaded with stated dependencies (1s)
+✔  checking whether the namespace can be unloaded cleanly (1.3s)
+✔  checking loading without being on the library search path (1.2s)
+W  checking dependencies in R code (1.1s)
+   '::' or ':::' import not declared from: 'purrr'
+✔  checking S3 generic/method consistency (1.4s)
+✔  checking replacement functions (1s)
+✔  checking foreign function calls (1s)
+N  checking R code for possible problems (8.2s)
+   compare_rates_within_groups: no visible global function definition for      'as_tibble'
+   compare_rates_within_groups: no visible global function definition for      'bind_cols'
+   get_concordant_discordant_pairs: no visible global function definition      for 'rowid_to_column'
+   get_concordant_discordant_pairs: no visible binding for global variable      'id'
+   get_concordant_discordant_pairs: no visible global function definition      for 'add_row'
+   get_concordant_discordant_pairs: no visible global function definition      for 'replace_na'
+   get_concordant_discordant_pairs: no visible binding for global variable      'n'
+   get_confidence_intervals_within_groups: no visible binding for global      variable 'n'
+   get_confidence_intervals_within_groups: no visible binding for global      variable 'adj'
+   get_confidence_intervals_within_groups: no visible global function      definition for 'pull'
+   get_confidence_intervals_within_groups: no visible global function      definition for 'summarise'
+   get_confidence_intervals_within_groups: no visible binding for global      variable 'adj_n'
+   table_observed_expected: no visible global function definition for      'chisq.test'
+   table_observed_expected: no visible global function definition for      'summarise'
+   table_observed_expected: no visible global function definition for      'as_tibble'
+   table_observed_expected: no visible global function definition for      'relocate'
+   table_observed_expected: no visible global function definition for      'left_join'
+   table_observed_expected: no visible binding for global variable 'diff2'
+   table_observed_expected: no visible global function definition for ':='
+   test_chisq_one: no visible global function definition for 'distinct'
+   test_chisq_one: no visible binding for global variable 'observed'
+   test_chisq_one: no visible binding for global variable 'expected'
+   test_chisq_one: no visible binding for global variable 'residual'
+   test_chisq_one: no visible binding for global variable 'residual_sq'
+   test_chisq_one: no visible global function definition for 'summarise'
+   test_chisq_one: no visible binding for global variable 'component'
+   test_chisq_two: no visible global function definition for 'pchisq'
+   test_chisq_two: no visible binding for global variable 'chisq'
+   test_fisher: no visible global function definition for 'summarise'
+   test_fisher: no visible global function definition for 'fisher.test'
+   test_mcnemar: no visible binding for global variable 'n'
+   test_n_1_prop: no visible global function definition for 'ungroup'
+   test_n_1_prop: no visible global function definition for 'group_by'
+   test_n_1_prop: no visible global function definition for 'complete'
+   test_n_1_prop: no visible global function definition for 'summarise'
+   test_n_1_prop: no visible global function definition for 'slice'
+   test_n_1_prop: no visible binding for global variable 'prop'
+   test_n_1_prop: no visible binding for global variable 'total'
+   test_n_1_prop: no visible binding for global variable 'fr'
+   test_n_1_prop: no visible binding for global variable 'design'
+   test_n_1_prop: no visible binding for global variable 'p_adj'
+   test_n_1_prop: no visible binding for global variable 'adj_n'
+   test_n_1_prop: no visible binding for global variable 'rhs'
+   test_n_1_prop: no visible binding for global variable 'lhs'
+   test_n_1_prop: no visible global function definition for 'pnorm'
+
+
+   Undefined global functions or variables:
+     := add_row adj adj_n as_tibble bind_cols chisq chisq.test complete
+     component design diff2 distinct expected fisher.test fr group_by id
+     left_join lhs n observed p_adj pchisq pnorm prop pull relocate
+     replace_na residual residual_sq rhs rowid_to_column slice summarise
+     total ungroup
+
+
+   Consider adding
+     importFrom("stats", "chisq.test", "fisher.test", "pchisq", "pnorm")
+   to your NAMESPACE file.
+
+
+✔  checking Rd files (389ms)
+✔  checking Rd metadata ...
+✔  checking Rd line widths ...
+✔  checking Rd cross-references (368ms)
+W  checking for missing documentation entries (1.1s)
+
+
+   Undocumented code objects:
+     'compare_rates_between_groups' 'compare_rates_within_groups'
+
+
+   All user-level objects in a package should have documentation entries.
+   See chapter 'Writing R documentation files' in the 'Writing R
+   Extensions' manual.
+✔  checking for code/documentation mismatches (3.1s)
+W  checking Rd \usage sections (453ms)
+   Documented arguments not in \usage in documentation object 'test_mcnemar':
+     'id'
+
+   Documented arguments not in \usage in documentation object 'test_n_1_prop':
+     'value'
+
+   Functions with \usage entries need to have the appropriate \alias
+   entries, and all their arguments documented.
+   The \usage entries must correspond to syntactically valid R code.
+   See chapter 'Writing R documentation files' in the 'Writing R
+   Extensions' manual.
+✔  checking Rd contents (1.6s)
+✔  checking for unstated dependencies in examples (358ms)
+✔  checking contents of 'data' directory
+✔  checking data for non-ASCII characters ...
+✔  checking LazyData
+✔  checking data for ASCII and uncompressed saves ...
+E  checking examples (3.2s)
+   Running examples in 'uxr-Ex.R' failed
+   The error most likely occurred in:
+
+   > base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+   > ### Name: get_concordant_discordant_pairs
+   > ### Title: Get concordant and discordant pairs for two variables
+   > ### Aliases: get_concordant_discordant_pairs
+   >
+   > ### ** Examples
+   >
+   > mtcars$id <- seq.int(nrow(mtcars))
+   > get_concordant_discordant_pairs(mtcars, x = vs, y = am)
+   Error in rowid_to_column(select(data, { :
+     could not find function "rowid_to_column"
+   Calls: get_concordant_discordant_pairs ... count -> mutate -> pivot_wider -> mutate -> pivot_longer
+   Execution halted
+✔  checking for non-standard things in the check directory
+✔  checking for detritus in the temp directory
+
+   See
+     'C:/Users/Meshach/Documents/GitHub/uxr.Rcheck/00check.log'
+   for details.
+
+
+── R CMD check results ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── uxr 0.1.2 ────
+Duration: 46.6s
+
+❯ checking examples ... ERROR
+  Running examples in 'uxr-Ex.R' failed
+  The error most likely occurred in:
+
+  > base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+  > ### Name: get_concordant_discordant_pairs
+  > ### Title: Get concordant and discordant pairs for two variables
+  > ### Aliases: get_concordant_discordant_pairs
+  >
+  > ### ** Examples
+  >
+  > mtcars$id <- seq.int(nrow(mtcars))
+  > get_concordant_discordant_pairs(mtcars, x = vs, y = am)
+  Error in rowid_to_column(select(data, { :
+    could not find function "rowid_to_column"
+  Calls: get_concordant_discordant_pairs ... count -> mutate -> pivot_wider -> mutate -> pivot_longer
+  Execution halted
+
+❯ checking dependencies in R code ... WARNING
+  '::' or ':::' import not declared from: 'purrr'
+
+❯ checking for missing documentation entries ... WARNING
+  Undocumented code objects:
+    'compare_rates_between_groups' 'compare_rates_within_groups'
+  All user-level objects in a package should have documentation entries.
+  See chapter 'Writing R documentation files' in the 'Writing R
+  Extensions' manual.
+
+❯ checking Rd \usage sections ... WARNING
+  Documented arguments not in \usage in documentation object 'test_mcnemar':
+    'id'
+
+  Documented arguments not in \usage in documentation object 'test_n_1_prop':
+    'value'
+
+  Functions with \usage entries need to have the appropriate \alias
+  entries, and all their arguments documented.
+  The \usage entries must correspond to syntactically valid R code.
+  See chapter 'Writing R documentation files' in the 'Writing R
+  Extensions' manual.
+
+❯ checking for future file timestamps ... NOTE
+  unable to verify current time
+
+❯ checking R code for possible problems ... NOTE
+  compare_rates_within_groups: no visible global function definition for
+    'as_tibble'
+  compare_rates_within_groups: no visible global function definition for
+    'bind_cols'
+  get_concordant_discordant_pairs: no visible global function definition
+    for 'rowid_to_column'
+  get_concordant_discordant_pairs: no visible binding for global variable
+    'id'
+  get_concordant_discordant_pairs: no visible global function definition
+    for 'add_row'
+  get_concordant_discordant_pairs: no visible global function definition
+    for 'replace_na'
+  get_concordant_discordant_pairs: no visible binding for global variable
+    'n'
+  get_confidence_intervals_within_groups: no visible binding for global
+    variable 'n'
+  get_confidence_intervals_within_groups: no visible binding for global
+    variable 'adj'
+  get_confidence_intervals_within_groups: no visible global function
+    definition for 'pull'
+  get_confidence_intervals_within_groups: no visible global function
+    definition for 'summarise'
+  get_confidence_intervals_within_groups: no visible binding for global
+    variable 'adj_n'
+  table_observed_expected: no visible global function definition for
+    'chisq.test'
+  table_observed_expected: no visible global function definition for
+    'summarise'
+  table_observed_expected: no visible global function definition for
+    'as_tibble'
+  table_observed_expected: no visible global function definition for
+    'relocate'
+  table_observed_expected: no visible global function definition for
+    'left_join'
+  table_observed_expected: no visible binding for global variable 'diff2'
+  table_observed_expected: no visible global function definition for ':='
+  test_chisq_one: no visible global function definition for 'distinct'
+  test_chisq_one: no visible binding for global variable 'observed'
+  test_chisq_one: no visible binding for global variable 'expected'
+  test_chisq_one: no visible binding for global variable 'residual'
+  test_chisq_one: no visible binding for global variable 'residual_sq'
+  test_chisq_one: no visible global function definition for 'summarise'
+  test_chisq_one: no visible binding for global variable 'component'
+  test_chisq_two: no visible global function definition for 'pchisq'
+  test_chisq_two: no visible binding for global variable 'chisq'
+  test_fisher: no visible global function definition for 'summarise'
+  test_fisher: no visible global function definition for 'fisher.test'
+  test_mcnemar: no visible binding for global variable 'n'
+  test_n_1_prop: no visible global function definition for 'ungroup'
+  test_n_1_prop: no visible global function definition for 'group_by'
+  test_n_1_prop: no visible global function definition for 'complete'
+  test_n_1_prop: no visible global function definition for 'summarise'
+  test_n_1_prop: no visible global function definition for 'slice'
+  test_n_1_prop: no visible binding for global variable 'prop'
+  test_n_1_prop: no visible binding for global variable 'total'
+  test_n_1_prop: no visible binding for global variable 'fr'
+  test_n_1_prop: no visible binding for global variable 'design'
+  test_n_1_prop: no visible binding for global variable 'p_adj'
+  test_n_1_prop: no visible binding for global variable 'adj_n'
+  test_n_1_prop: no visible binding for global variable 'rhs'
+  test_n_1_prop: no visible binding for global variable 'lhs'
+  test_n_1_prop: no visible global function definition for 'pnorm'
+  Undefined global functions or variables:
+    := add_row adj adj_n as_tibble bind_cols chisq chisq.test complete
+    component design diff2 distinct expected fisher.test fr group_by id
+    left_join lhs n observed p_adj pchisq pnorm prop pull relocate
+    replace_na residual residual_sq rhs rowid_to_column slice summarise
+    total ungroup
+  Consider adding
+    importFrom("stats", "chisq.test", "fisher.test", "pchisq", "pnorm")
+  to your NAMESPACE file.
+
+1 error ✖ | 3 warnings ✖ | 2 notes ✖
+Error: R CMD check found ERRORs
+Execution halted
+
+Exited with status 1.

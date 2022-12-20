@@ -4,7 +4,7 @@
 \alias{test_n_1_prop}
 \title{N-1 Two Proportions Test}
 \usage{
-test_n_1_prop(data, x, y, z)
+test_n_1_prop(data, x, y, z = 1.96)
 }
 \arguments{
 \item{data}{data}
@@ -26,8 +26,9 @@ N-1 Two Proportions Test
 \examples{
 design = c("A","B")
 complete = c(37, 22)
-incomplete = c(418, 438)
+incomplete = c(418, 416)
 data <- data.frame(design, complete, incomplete)
-data <- data |> pivot_longer(!design, names_to = "rate", values_to = "n") |>  tidyr::uncount(n)
+data <- data |> pivot_longer(!design, names_to = "rate", values_to = "n") |>
+  tidyr::uncount(n)
 test_n_1_prop(data, design, rate, z = 1.645)
 }

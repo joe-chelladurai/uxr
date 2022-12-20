@@ -3,20 +3,18 @@
 
 
 
-
-
-data <- tibble::tribble(~fruit, ~count,
-                        "Apple"       , 29,
-                        "Banana"      , 24,
-                        "Cucumber"      , 22,
-                        "Dragon Fruit"      , 19
-
-)
-
-data <- data |>
-  uncount(weights = count) |>
-  rowid_to_column("id")
-
+# data <- tibble::tribble(~fruit, ~count,
+#                         "Apple"          , 29,
+#                         "Banana"         , 24,
+#                         "Cucumber"       , 22,
+#                         "Dragon Fruit"   , 19
+#                         )
+#
+# data <- data |>
+#   uncount(weights = count) |>
+#   rowid_to_column("id")
+#
+# test_chisq_one(data, fruit)
 
 test_chisq_one <- function(data, x) {
 
@@ -40,7 +38,7 @@ test_chisq_one <- function(data, x) {
 
 }
 
-test_chisq_one(data, fruit)
+
 
 
 

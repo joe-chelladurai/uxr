@@ -1,0 +1,43 @@
+
+
+```{r}
+test_mcnemar(data, A, B)
+
+data_tidy <- data |> rowid_to_column("id") |>
+  pivot_longer(cols = -id, names_to = "group", values_to = "status")
+
+
+test_mcnemar_tidy <- function(data, group, var) {
+
+
+  data <- data |>
+    mutate(situation = as.numeric(factor({{var}}))-1)
+
+  data
+}
+
+data_tidy2 <- data_tidy |>
+  mutate(status2 = case_when(status == 1 ~ "pass",
+                             status == 0 ~ "fail"))
+
+
+data_tidy2 |>
+  mutate(status3 = as.numeric(factor(status2))-1) |>
+  pivot_wider(cols = c("id", "status3"), names_from = id, values_from = status3)
+
+
+data_tidy2 |>
+  mutate(status3 = as.numeric(factor(status2))-1) |>
+  select(id, group, status3) |>
+  pivot_wider(names_from = "group", values_from = "status3")
+
+
+
+data_tidy2
+
+get_concordant_discordant_pairs()
+
+test_mcnemar_tidy(data_tidy2, group, status)
+
+```
+

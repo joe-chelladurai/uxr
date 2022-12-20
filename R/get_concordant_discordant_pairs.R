@@ -23,6 +23,7 @@ get_concordant_discordant_pairs <- function(data, x, y) {
   x_name <- deparse(substitute(x))
   y_name <- deparse(substitute(y))
 
+
   table <- data |>
     select({{x}}, {{y}}) |>
     rowid_to_column("id") |> pivot_longer(cols = -id) |>
@@ -33,19 +34,23 @@ get_concordant_discordant_pairs <- function(data, x, y) {
       {{x}} < {{y}} ~ "c",
       {{x}} + {{y}} == 2 ~ "a",
       {{x}} + {{y}} == 0 ~ "d")) |>
+    count(pairs)
+
+
+  if ("a" %in% table$pairs == FALSE) { table <- table |> add_row(pairs = "a") }
+  if ("b" %in% table$pairs == FALSE) { table <- table |> add_row(pairs = "b") }
+  if ("c" %in% table$pairs == FALSE) { table <- table |> add_row(pairs = "c") }
+  if ("d" %in% table$pairs == FALSE) { table <- table |> add_row(pairs = "d") }
+
+  table <- table |>
     mutate(type = case_when(pairs == "a" ~ "concordant: x = 1 & y = 1",
                             pairs == "d" ~ "concordant: x = 0 & y = 0",
                             pairs == "b" ~ "discordant: x = 1 & y = 0",
                             pairs == "c" ~ "discordant: x = 0 & y = 1")) |>
     mutate(type = str_replace(type, 'x', x_name)) |>
     mutate(type = str_replace(type, 'y', y_name)) |>
-    count(pairs, type) |> data.frame()
-
-
-  selected <- table |> select(-type) |>
-    deframe() |> as.list()
+    mutate(n = replace_na(n, 0))
 
   return(table)
 
 }
-
