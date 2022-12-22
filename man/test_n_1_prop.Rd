@@ -4,7 +4,7 @@
 \alias{test_n_1_prop}
 \title{N-1 Two Proportions Test}
 \usage{
-test_n_1_prop(data, x, y, z = 1.96)
+test_n_1_prop(data, x, y, conf_level = 0.95)
 }
 \arguments{
 \item{data}{data}
@@ -13,7 +13,7 @@ test_n_1_prop(data, x, y, z = 1.96)
 
 \item{y}{y}
 
-\item{z}{z}
+\item{conf_level}{Confidence Level (default = 0.95)}
 }
 \value{
 results
@@ -28,5 +28,5 @@ incomplete = c(418, 416)
 data <- data.frame(design, complete, incomplete)
 data <- data |> tidyr::pivot_longer(!design, names_to = "rate", values_to = "n") |>
   tidyr::uncount(n)
-test_n_1_prop(data, design, rate, z = 1.645)
+test_n_1_prop(data, design, rate, conf_level = 0.95)
 }

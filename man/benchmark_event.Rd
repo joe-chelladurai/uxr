@@ -9,7 +9,7 @@ benchmark_event(
   event,
   total,
   event_type = "",
-  notes = c("minimal", "technical")
+  notes = c("minimal", "technical", "none")
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ benchmark_event(
 
 \item{event_type}{Optional: a string describing the type of event. For example, success, failure, etc.}
 
-\item{notes}{whether output should contain minimal, technical, or executive type of notes.}
+\item{notes}{whether output should contain minimal or technical type of notes. Defaults to "minimal". Use "none" to turn off.}
 }
 \value{
 list of event rate, probability, notes
@@ -31,8 +31,8 @@ Compare Probability of an Event with Benchmark
 }
 \examples{
 benchmark_event(benchmark = 0.7,
-                     event = 10,
-                     total = 12,
-                     event_type = "success",
-                     notes = "minimal")
+                event = 10,
+                total = 12,
+                event_type = "success",
+                notes = "minimal")
 }

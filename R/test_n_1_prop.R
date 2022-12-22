@@ -5,10 +5,10 @@
 #' @param data data
 #' @param x x
 #' @param y y
-#' @param z z
+#' @param conf_level Confidence Level (default = 0.95)
 #' @importFrom dplyr ungroup group_by slice
 #' @importFrom tidyr complete
-#' @importFrom stats pnorm
+#' @importFrom stats pnorm qnorm
 #' @return results
 #' @export
 #' @examples
@@ -18,10 +18,12 @@
 #' data <- data.frame(design, complete, incomplete)
 #' data <- data |> tidyr::pivot_longer(!design, names_to = "rate", values_to = "n") |>
 #'   tidyr::uncount(n)
-#' test_n_1_prop(data, design, rate, z = 1.645)
+#' test_n_1_prop(data, design, rate, conf_level = 0.95)
 
 
-test_n_1_prop <- function(data, x, y, z = 1.96) {
+test_n_1_prop <- function(data, x, y, conf_level = 0.95) {
+
+   z <- abs(qnorm((1 - conf_level) / 2))
 
   prop_tab <- data |> group_by({{x}}, {{y}}) |>
     count() |> ungroup() |>

@@ -2,9 +2,8 @@
 
 #' Compare Score with a Benchmark
 #'
-#' @param data a column or vector of scores
 #' @param benchmark benchmark
-#' @param alpha alpha
+#' @param scores a column or vector of scores
 #' @param tail one-tailed or two-tailed test
 #' @param remove_missing TRUE/FALSE remove missing values? (default is TRUE)
 #' @return lower_ci, upper_ci, t, probability
@@ -12,19 +11,19 @@
 #' @importFrom huxtable position map_align print_screen by_cols as_hux
 #' @importFrom stats pt sd na.omit
 #' @examples
-#' data <- 68 + 17 * scale(rnorm(20)) # 68 = mean, 17 = sd
-#' benchmark_score(data, benchmark = 60, alpha = 0.5)
+#' scores <- 68 + 17 * scale(rnorm(20)) # 68 = mean, 17 = sd
+#' benchmark_score(values, benchmark = 60)
 
 
-benchmark_score <- function(data, benchmark, alpha, tail = "one", remove_missing = TRUE) {
+benchmark_score <- function(benchmark, scores, tail = "one", remove_missing = TRUE) {
 
-    mean <- mean(data, na.rm = remove_missing)
-    sd <- sd(data, na.rm = remove_missing)
+    mean <- mean(scores, na.rm = remove_missing)
+    sd <- sd(scores, na.rm = remove_missing)
 
     if (remove_missing == TRUE) {
-      n <- length(na.omit(data))
+      n <- length(na.omit(scores))
     } else {
-      n <- length(data)
+      n <- length(scores)
     }
 
     df <- n - 1
@@ -58,7 +57,6 @@ benchmark_score <- function(data, benchmark, alpha, tail = "one", remove_missing
          se = se,
          n = n,
          df = df,
-         alpha = alpha,
          probability = round(probability, 3),
          tail = tail,
          confidence = round(confidence, 3),
@@ -97,7 +95,11 @@ benchmark_score <- function(data, benchmark, alpha, tail = "one", remove_missing
     return(invisible(result_output))
   }
 
+scores <- 80 + 23 * scale(rnorm(172))
 
+
+data |>
+  benchmark_score(0.67)
 
 
 # length_na <- function(data, remove_missing) {

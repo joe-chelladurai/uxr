@@ -37,11 +37,15 @@ remotes::install_github("joe-chelladurai/uxr")
  - `benchmark_time`
  - `benchmark_score`
  - `get_concordant_discordant_pairs`
- - `get_confidence_intervals_event`
- - `compare_means_within_groups` - two-sample t-test
- - `compare_means_between_groups` - paired t-test
  - `test_t`
  - `test_t_paired`
+ - `test_mcnemar`
+ - `test_fisher`
+ - `test_n_1_prop`
+ - `test_wald`
+ - `test_wald_adj`
+ - `compare_means_within_groups` - two-sample t-test (Welsh/Student)
+ - `compare_means_between_groups` - paired t-test
  - `compare_rates_within_groups` - mcnemar exact test
  - `compare_rates_between_groups` - n-1 two proportion test
  
