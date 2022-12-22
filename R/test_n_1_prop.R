@@ -5,8 +5,10 @@
 #' @param data data
 #' @param x x
 #' @param y y
-#' @param value value
 #' @param z z
+#' @importFrom dplyr ungroup group_by slice
+#' @importFrom tidyr complete
+#' @importFrom stats pnorm
 #' @return results
 #' @export
 #' @examples
@@ -14,7 +16,7 @@
 #' complete = c(37, 22)
 #' incomplete = c(418, 416)
 #' data <- data.frame(design, complete, incomplete)
-#' data <- data |> pivot_longer(!design, names_to = "rate", values_to = "n") |>
+#' data <- data |> tidyr::pivot_longer(!design, names_to = "rate", values_to = "n") |>
 #'   tidyr::uncount(n)
 #' test_n_1_prop(data, design, rate, z = 1.645)
 

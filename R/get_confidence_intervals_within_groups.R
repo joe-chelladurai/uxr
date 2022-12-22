@@ -1,11 +1,21 @@
 
 
 
-#A <- c(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1)
-#B <- c(0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0)
-
-#data <- data.frame(A, B)
-#get_confidence_intervals_within_groups(data, A, B)
+#' Get Confidence Intervals Within Groups
+#'
+#' @param data data
+#' @param x var 1
+#' @param y var 2
+#' @param z value
+#' @importFrom dplyr bind_cols rename summarise pull
+#' @importFrom tibble as_tibble
+#' @return results
+#' @export
+#' @examples
+#' A <- c(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1)
+#' B <- c(0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0)
+#' data <- data.frame(A, B)
+#' get_confidence_intervals_within_groups(data, A, B)
 
 
 get_confidence_intervals_within_groups <- function(data, x, y, z = 1.96) {

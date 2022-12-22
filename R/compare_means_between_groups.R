@@ -60,7 +60,7 @@ compare_means_between_groups <- function(data, variable, grouping_variable, grou
   result_table <- result_table |>
     dplyr::mutate(t = round(result$statistic, 2),
                   p = scales::pvalue(result$p.value),
-                  df = round(result$parameter),
+                  df = result$parameter,
                   ci_level = ci_level) |>
     dplyr::bind_cols(tibble::tibble(ci)) |>
     t() |> data.frame() |> tibble::rownames_to_column(" ") |> data.frame()

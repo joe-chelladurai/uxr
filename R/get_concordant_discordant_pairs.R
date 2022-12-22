@@ -6,11 +6,12 @@
 #' @param x variable 1
 #' @param y variable 2
 #' @return a data frame
-#' @importFrom tidyr pivot_longer pivot_wider
-#' @importFrom dplyr mutate case_when count select
+#' @importFrom tidyr pivot_longer pivot_wider replace_na
+#' @importFrom dplyr mutate case_when count select relocate left_join
 #' @importFrom stringr str_replace
-#' @importFrom tibble deframe
+#' @importFrom tibble deframe rowid_to_column add_row
 #' @importFrom utils globalVariables
+#' @importFrom stats chisq.test
 #' @export
 #' @examples
 #' mtcars$id <- seq.int(nrow(mtcars))

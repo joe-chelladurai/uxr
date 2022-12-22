@@ -1,9 +1,17 @@
 
 
+#' Observed Expected Table
+#'
+#' @param data data
+#' @param x x
+#' @param y y
+#' @importFrom stats chisq.test
+#' @importFrom dplyr relocate left_join
+#' @importFrom rlang :=
+#' @return results
+#' @export
 
 
-
-# keeps column names
 table_observed_expected <- function(data, x, y) {
 
   table <- suppressWarnings(chisq.test(

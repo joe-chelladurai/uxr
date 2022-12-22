@@ -3,7 +3,6 @@
 #' McNemar Test
 #'
 #' @param data data
-#' @param id id or group
 #' @param x var 1
 #' @param y var 2
 #' @return results

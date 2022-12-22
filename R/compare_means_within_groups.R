@@ -1,6 +1,5 @@
 
 
-
 #' Compare Means Within Groups
 #'
 #' @param x x

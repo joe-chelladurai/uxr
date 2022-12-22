@@ -17,6 +17,8 @@ Imports:
     dplyr,
     huxtable,
     magrittr,
+    purrr,
+    rlang,
     scales,
     stringr,
     tibble,

@@ -42,10 +42,6 @@ remotes::install_github("joe-chelladurai/uxr")
  - `compare_means_between_groups` - paired t-test
  - `test_t`
  - `test_t_paired`
-
-
-To do:
-
  - `compare_rates_within_groups` - mcnemar exact test
  - `compare_rates_between_groups` - n-1 two proportion test
  

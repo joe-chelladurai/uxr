@@ -43,6 +43,12 @@
     <loc>https://joe-chelladurai.github.io/uxr/reference/compare_means_within_groups.html</loc>
   </url>
   <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/compare_rates_between_groups.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/compare_rates_within_groups.html</loc>
+  </url>
+  <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/dist_t.html</loc>
   </url>
   <url>
@@ -50,6 +56,9 @@
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/get_confidence_intervals_event.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/get_confidence_intervals_within_groups.html</loc>
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/index.html</loc>
@@ -65,6 +74,24 @@
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/stat_mean_ci_2.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/table_observed_expected.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/test_chisq_one.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/test_chisq_two.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/test_fisher.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/test_mcnemar.html</loc>
+  </url>
+  <url>
+    <loc>https://joe-chelladurai.github.io/uxr/reference/test_n_1_prop.html</loc>
   </url>
   <url>
     <loc>https://joe-chelladurai.github.io/uxr/reference/test_n_1_two_prop.html</loc>

@@ -18,6 +18,6 @@ lower_ci, upper_ci
 Mean Confidence Intervals (Large Samples)
 }
 \examples{
-mean_ci_2(c(1, 2, 3, 4, 5, 6, 7), 1.96)
-mean_ci_2(c(2, 4, 6, 8), 1.96)
+stat_mean_ci_2(c(1, 2, 3, 4, 5, 6, 7), 1.96)
+stat_mean_ci_2(c(2, 4, 6, 8), 1.96)
 }
