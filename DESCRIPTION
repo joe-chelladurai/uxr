@@ -1,14 +1,16 @@
 Package: uxr
 Type: Package
 Title: User Experience Research
-Version: 0.1.2
+Version: 0.2.0
 Authors@R: 
-    person("Joe", "Chelladurai", , "joe.chelladurai@outlook.com", role = c("aut", "cre"),
+    person("Joe", "Chelladurai", , "joe.chelladurai@yahoo.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8477-3753"))
 Description: Provides convenience functions for user experience research
     with an emphasis on quantitative user experience testing and reporting.
     The functions are designed to translate statistical approaches to 
     applied user experience research.
+URL: https://joe-chelladurai.github.io/uxr/
+BugReports: https://github.com/joe-chelladurai/uxr/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

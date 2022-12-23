@@ -8,8 +8,16 @@
 \description{
 Provides convenience functions for user experience research with an emphasis on quantitative user experience testing and reporting. The functions are designed to translate statistical approaches to applied user experience research.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://joe-chelladurai.github.io/uxr/}
+  \item Report bugs at \url{https://github.com/joe-chelladurai/uxr/issues}
+}
+
+}
 \author{
-\strong{Maintainer}: Joe Chelladurai \email{joe.chelladurai@outlook.com} (\href{https://orcid.org/0000-0001-8477-3753}{ORCID})
+\strong{Maintainer}: Joe Chelladurai \email{joe.chelladurai@yahoo.com} (\href{https://orcid.org/0000-0001-8477-3753}{ORCID})
 
 }
 \keyword{internal}

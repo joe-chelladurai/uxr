@@ -55,10 +55,16 @@ data |>
 ```{r}
 # specify `input = "values` to use with direct values
 benchmark_event(benchmark = 0.8, 
-                count = 4, 
-                total = 7, 
+                count = 9, 
+                total = 11, 
                 input = "values")
 ```
+
+```{r}
+# get confidence intervals
+# test_wald_adj(10, 12)
+```
+
 
 
 # Compare Score with a Benchmark
@@ -118,6 +124,19 @@ compare_means_between_groups(data_long,
                              input = "long")
 ```
 
+
+
+```{r}
+A <- 51.6 + 4.07 * scale(rnorm(11)) 
+A <- c(A, NA)
+B <- 49.6 + 4.63 * scale(rnorm(12))
+data <- data.frame(A, B)
+
+compare_means_between_groups(data, A, B)
+```
+
+
+
 # Compare Means Within Groups
 
 ```{r}
@@ -125,22 +144,12 @@ data <- data.frame(id = c(1:7), task1 = c(4, 1, 2, 3, 8, 4, 4), task2 = c(7, 13,
 compare_means_within_groups(data, task1, task2)
 ```
 
-```{r}
-id <- c(1:7)
-task1 <- c(4, 1, 2, 3, 8, 4, 4)
-task2 <- c(7, 13, 9, 7, 18, 8, 10)
-
-data <- tibble::as_tibble(data.frame(id, task1, task2))
-
-compare_means_within_groups(data, task1, task2)
-```
-
 # Compare Rates Between Groups
 
 ```{r}
 design = c("A","B")
-complete = c(37, 22)
-incomplete = c(418, 416)
+complete = c(10, 4)
+incomplete = c(2, 9)
 data <- data.frame(design, complete, incomplete)
 data <- data |> tidyr::pivot_longer(!design, names_to = "rate", values_to = "n") |>
   tidyr::uncount(n)

@@ -1,3 +1,20 @@
+## Resubmission (Dec 23 2022)
+This is a resubmission. In this version I have:
+
+* Added more functions
+
+* Updated examples
+
+* Updated documentation
+
+
+## Resubmission (Oct 4 2022)
+This is a resubmission. In this version I have:
+
+* Fixed Author field formatting
+
+
+
 ## Resubmission (Oct 3 2022)
 This is a resubmission. In this version I have:
 
@@ -5,9 +22,4 @@ This is a resubmission. In this version I have:
 
 * Fixed typographic errors in the DESCRIPTION file.
 
-
-## Resubmission (Oct 4 2022)
-This is a resubmission. In this version I have:
-
-* Fixed Author field formatting
 

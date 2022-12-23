@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">uxr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,13 @@
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/joe-chelladurai/uxr/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -38,7 +44,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Compare Rates Between Groups</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/joe-chelladurai/uxr/blob/HEAD/R/compare_rates_between_groups.R" class="external-link"><code>R/compare_rates_between_groups.R</code></a></small>
       <div class="d-none name"><code>compare_rates_between_groups.Rd</code></div>
     </div>
 
@@ -94,8 +100,8 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">design</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"B"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">complete</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">37</span>, <span class="fl">22</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">incomplete</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">418</span>, <span class="fl">416</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">complete</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">34</span>, <span class="fl">24</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">incomplete</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">317</span>, <span class="fl">301</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">design</span>, <span class="va">complete</span>, <span class="va">incomplete</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">|&gt;</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="op">!</span><span class="va">design</span>, names_to <span class="op">=</span> <span class="st">"rate"</span>, values_to <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/uncount.html" class="external-link">uncount</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></span>
@@ -103,18 +109,18 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Compare Rates Between Groups</span> <span style="color: #00BBBB;">────────────────────────────────────────────────</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → N-1 Two Proportions test</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   term          value  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   a            0.0311  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   b             0.999  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   c            0.0617  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   d           0.00448  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   den          0.0166  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   num          0.0311  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   z              1.87  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   p_value      0.0617  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   n               893  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   lower_ci   -0.00186  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   upper_ci     0.0636  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   term         value  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   a            0.023  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   b            0.999  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   c           0.0784  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   d          0.00593  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   den         0.0216  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   num          0.023  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   z             1.07  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   p_value      0.286  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   n              676  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   lower_ci   -0.0197  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   upper_ci    0.0651  </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

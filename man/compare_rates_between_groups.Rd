@@ -34,8 +34,8 @@ Compare Rates Between Groups
 }
 \examples{
 design = c("A","B")
-complete = c(37, 22)
-incomplete = c(418, 416)
+complete = c(34, 24)
+incomplete = c(317, 301)
 data <- data.frame(design, complete, incomplete)
 data <- data |> tidyr::pivot_longer(!design, names_to = "rate", values_to = "n") |>
   tidyr::uncount(n)
