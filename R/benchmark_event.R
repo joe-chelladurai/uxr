@@ -2,11 +2,16 @@
 
 #' Compare Probability of an Event with Benchmark
 #'
-#' @param event event
-#' @param total total
+#' @param data dataset
+#' @param column name of column
 #' @param benchmark benchmark
+#' @param event specify event as given in column (example: 0, "pass", "success")
+#' @param count number of times event has occurred. Use only when using input = "values"
+#' @param total total number of all events. Use only when using input = "values"
 #' @param event_type Optional: a string describing the type of event. For example, success, failure, etc.
 #' @param notes whether output should contain minimal or technical type of notes. Defaults to "minimal". Use "none" to turn off.
+#' @param remove_missing TRUE/FALSE (Default is TRUE)
+#' @param input Default: "long" - long form of data, "values" to pass values directly. If using this option, must specify count and total.
 #' @return list of event rate, probability, notes
 #' @export
 #' @import magrittr
@@ -15,89 +20,121 @@
 #' @importFrom stats dbinom
 #' @importFrom scales percent
 #' @importFrom tibble as_tibble
+#' @importFrom cli cli_h1 cli_text
 #' @examples
-#' benchmark_event(benchmark = 0.7,
-#'                 event = 10,
-#'                 total = 12,
-#'                 event_type = "success",
-#'                 notes = "minimal")
+#' data <- data.frame(task_1 = c("y", "y", "y", "y", "n", "n", "n", NA, NA, NA, NA, NA, NA, NA),
+#'                    task_2 = c(0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1))
+#' benchmark_event(data, column = task_1, benchmark = 0.8, event = "y")
+#' benchmark_event(data, column = task_2, benchmark = 0.3, event = 1, event_type = "success")
+#' benchmark_event(benchmark = 0.8, count = 4, total = 7, input = "values")
 
 
-benchmark_event <- function(benchmark, event, total, event_type = "", notes = c("minimal", "technical", "none")) {
 
-  result <- 1 - sum(dbinom(event:total, prob = benchmark, size = total))
 
-  rate <- event |> divide_by(total) |> percent(2)
-
-  if(event_type == "") {
-    event_type <- "event"
+benchmark_event <- function(data,
+                            column,
+                            benchmark,
+                            event,
+                            count,
+                            total,
+                            event_type = "",
+                            remove_missing = TRUE,
+                            notes = "minimal",
+                            input = "long",
+                            print = TRUE) {
+  if (input == "long") {
+    column <- deparse(substitute(column))
+    if (remove_missing == TRUE) {
+      total <- length(data[[column]][!is.na(data[[column]])])
+    } else {
+      total <- length(data[[column]])
+    }
+    event_count <- table(data[[column]])[[event]]
+  } else if (input == "values") {
+    event_count <- count
+    total <- total
   }
+
+  result <- 1 - sum(dbinom(event_count:total, prob = benchmark, size = total))
+
+  probability <- round(result, 3)
+
+  rate <- event_count |>
+    divide_by(total) |>
+    percent(2)
 
   benchmark_text <- benchmark |> percent()
 
   result_percent <- result |> percent()
 
-  probability <- round(result, 3)
-
-  none <- ""
-
-  minimal <-  paste("Based on the", event_type, paste0("rate of ", rate, ","),
-                    "the probability that this rate exceeds a benchmark of",
-                    benchmark_text, "is",
-                    result_percent)
-
-  technical <- paste("Probability values were computed based on the binomial distribution",
-                     "With the", event_type, paste0("rate of ", rate, ","),
-                     "the probability that this rate exceeds a benchmark of",
-                     benchmark_text, "is",
-                     result)
-
-
-  output_text <- match.arg(notes)
-
-
-  cli::cli_h1("Compare Event Rate with a Benchmark")
-
-
-
-  result <- data.frame(event = event,
-       total = total,
-       benchmark = benchmark,
-       probability = probability,
-       output_text =  switch(output_text,
-                             none = none,
-                             minimal = minimal,
-                             technical = technical)
-  )
-
-  if (notes == "none") {
-    result <- result |> select(-output_text)
+  if (event_type == "") {
+    event_type <- "event"
   }
 
-  cli::cli_text(result$output_text)
+  # notes
+  output_text <- match.arg(notes)
+  none <- ""
+  minimal <- paste(
+    "Based on the", event_type, paste0("rate of ", rate, ","),
+    "the probability that this rate exceeds a benchmark of",
+    benchmark_text, "is",
+    result_percent
+  )
 
-  result_table <- result |>
+  technical <- paste(
+    "Probability values were computed based on the binomial distribution",
+    "With the", event_type, paste0("rate of ", rate, ","),
+    "the probability that this rate exceeds a benchmark of",
+    benchmark_text, "is",
+    result
+  )
+
+
+
+  # result table
+  result_table <- as_tibble(data.frame(
+    count = event_count,
+    total = total,
+    benchmark = benchmark,
+    result = result,
+    probability = probability,
+    output_text = switch(output_text,
+                         none = none,
+                         minimal = minimal,
+                         technical = technical
+    )
+  ))
+
+  if (notes == "none") {
+    result_table <- result_table |> select(-output_text)
+  }
+
+  # print table
+  result_table_print <- result_table |>
     t() |>
     data.frame() |>
-    tibble::rownames_to_column("term") |>
+    rownames_to_column("term") |>
     data.frame() |>
-    dplyr::rename(result = t.result.) |>
+    rename(result = 2) |>
     as_hux()
 
-  huxtable::position(result_table) <- "left"
+  huxtable::position(result_table_print) <- "left"
 
-  result_print <- result_table |> dplyr::filter(!stringr::str_detect(term, "output_text"))
+  result_print <- result_table_print |>
+    filter(!str_detect(term, "output_text"))
+
   result_print <- map_align(result_print, by_cols("left", "right"))
 
-  print_screen(result_print, colnames = FALSE)
+  if (print == TRUE) {
+    cli_h1("Compare Event Rate with a Benchmark")
+    cli_text(result_table$output_text)
+    print_screen(result_print, colnames = FALSE)
+  }
 
-  result_output <- as_tibble(result)
-
-  return(invisible(result_output))
-
+  # return
+  return(invisible(result_table))
 
 }
-
 
 
 
