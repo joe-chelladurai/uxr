@@ -97,12 +97,6 @@ indicates the success rate if we were to use this interface with
 potential users, given a representative sample.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">uxr</span><span class="op">)</span></span></code></pre></div>
-<p>#’ data &lt;- data.frame(task_1 = c(“y”, “y”, “y”, “y”, “n”, “n”,
-“n”, NA, NA, NA, NA, NA, NA, NA), #’ task_2 = c(0, 1, 1, 0, 1, 0, 1, 0,
-0, 0, 1, 1, 1, 1)) #’ benchmark_event(data, column = task_1, benchmark =
-0.8, event = “y”) #’ benchmark_event(data, column = task_2, benchmark =
-0.3, event = 1, event_type = “success”) #’ benchmark_event(benchmark =
-0.8, count = 4, total = 7, input = “values”)</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>task <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pass"</span>, <span class="st">"pass"</span>, <span class="st">"pass"</span>, <span class="st">"pass"</span>, <span class="st">"pass"</span>,</span>
 <span>                            <span class="st">"fail"</span>, <span class="st">"pass"</span>, <span class="st">"pass"</span>, <span class="st">"pass"</span>, <span class="st">"fail"</span>,</span>
