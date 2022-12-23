@@ -12,14 +12,15 @@
 #' @param notes whether output should contain minimal or technical type of notes. Defaults to "minimal". Use "none" to turn off.
 #' @param remove_missing TRUE/FALSE (Default is TRUE)
 #' @param input Default: "long" - long form of data, "values" to pass values directly. If using this option, must specify count and total.
-#' @return list of event rate, probability, notes
+#' @param output Default: "console" - prints output in console and returns tibble invisibly.
+#' @return dataframe of results when saved to object. show console output by default
 #' @export
 #' @import magrittr
 #' @importFrom huxtable position map_align print_screen by_cols as_hux
 #' @importFrom stringr str_detect
 #' @importFrom stats dbinom
 #' @importFrom scales percent
-#' @importFrom tibble as_tibble
+#' @importFrom tibble as_tibble rownames_to_column
 #' @importFrom cli cli_h1 cli_text
 #' @examples
 #' data <- data.frame(task_1 = c("y", "y", "y", "y", "n", "n", "n", NA, NA, NA, NA, NA, NA, NA),
@@ -41,7 +42,7 @@ benchmark_event <- function(data,
                             remove_missing = TRUE,
                             notes = "minimal",
                             input = "long",
-                            print = TRUE) {
+                            output = "console") {
   if (input == "long") {
     column <- deparse(substitute(column))
     if (remove_missing == TRUE) {
@@ -125,14 +126,21 @@ benchmark_event <- function(data,
 
   result_print <- map_align(result_print, by_cols("left", "right"))
 
-  if (print == TRUE) {
+
+
+  # return
+
+  if (output == "console") {
     cli_h1("Compare Event Rate with a Benchmark")
     cli_text(result_table$output_text)
     print_screen(result_print, colnames = FALSE)
+    return(invisible(result_table))
+  } else if (output == "tibble") {
+    return(result_table)
   }
 
-  # return
-  return(invisible(result_table))
+
+
 
 }
 

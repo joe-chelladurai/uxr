@@ -5,34 +5,52 @@
 \title{Compare Probability of an Event with Benchmark}
 \usage{
 benchmark_event(
+  data,
+  column,
   benchmark,
   event,
+  count,
   total,
   event_type = "",
-  notes = c("minimal", "technical", "none")
+  remove_missing = TRUE,
+  notes = "minimal",
+  input = "long",
+  output = "console"
 )
 }
 \arguments{
+\item{data}{dataset}
+
+\item{column}{name of column}
+
 \item{benchmark}{benchmark}
 
-\item{event}{event}
+\item{event}{specify event as given in column (example: 0, "pass", "success")}
 
-\item{total}{total}
+\item{count}{number of times event has occurred. Use only when using input = "values"}
+
+\item{total}{total number of all events. Use only when using input = "values"}
 
 \item{event_type}{Optional: a string describing the type of event. For example, success, failure, etc.}
 
+\item{remove_missing}{TRUE/FALSE (Default is TRUE)}
+
 \item{notes}{whether output should contain minimal or technical type of notes. Defaults to "minimal". Use "none" to turn off.}
+
+\item{input}{Default: "long" - long form of data, "values" to pass values directly. If using this option, must specify count and total.}
+
+\item{output}{Default: "console" - prints output in console and returns tibble invisibly.}
 }
 \value{
-list of event rate, probability, notes
+dataframe of results when saved to object. show console output by default
 }
 \description{
 Compare Probability of an Event with Benchmark
 }
 \examples{
-benchmark_event(benchmark = 0.7,
-                event = 10,
-                total = 12,
-                event_type = "success",
-                notes = "minimal")
+data <- data.frame(task_1 = c("y", "y", "y", "y", "n", "n", "n", NA, NA, NA, NA, NA, NA, NA),
+                   task_2 = c(0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1))
+benchmark_event(data, column = task_1, benchmark = 0.8, event = "y")
+benchmark_event(data, column = task_2, benchmark = 0.3, event = 1, event_type = "success")
+benchmark_event(benchmark = 0.8, count = 4, total = 7, input = "values")
 }

@@ -4,14 +4,12 @@
 \alias{benchmark_score}
 \title{Compare Score with a Benchmark}
 \usage{
-benchmark_score(data, benchmark, alpha, tail = "one", remove_missing = TRUE)
+benchmark_score(benchmark, scores, tail = "one", remove_missing = TRUE)
 }
 \arguments{
-\item{data}{a column or vector of scores}
-
 \item{benchmark}{benchmark}
 
-\item{alpha}{alpha}
+\item{scores}{a column or vector of scores}
 
 \item{tail}{one-tailed or two-tailed test}
 
@@ -24,6 +22,6 @@ lower_ci, upper_ci, t, probability
 Compare Score with a Benchmark
 }
 \examples{
-data <- 68 + 17 * scale(rnorm(20)) # 68 = mean, 17 = sd
-benchmark_score(data, benchmark = 60, alpha = 0.5)
+scores <- 80 + 23 * scale(rnorm(172)) # 80 = mean, 23 = sd
+benchmark_score(benchmark = 67, scores = scores)
 }

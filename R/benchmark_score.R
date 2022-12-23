@@ -11,9 +11,8 @@
 #' @importFrom huxtable position map_align print_screen by_cols as_hux
 #' @importFrom stats pt sd na.omit
 #' @examples
-#' scores <- 68 + 17 * scale(rnorm(20)) # 68 = mean, 17 = sd
-#' benchmark_score(values, benchmark = 60)
-
+#' scores <- 80 + 23 * scale(rnorm(172)) # 80 = mean, 23 = sd
+#' benchmark_score(benchmark = 67, scores = scores)
 
 benchmark_score <- function(benchmark, scores, tail = "one", remove_missing = TRUE) {
 
@@ -69,10 +68,6 @@ benchmark_score <- function(benchmark, scores, tail = "one", remove_missing = TR
 
     cli::cli_h1("Compare Score with a Benchmark")
 
-
-
-
-
     cli::cli_text(result$text_output)
 
     result_table <- result |>
@@ -95,21 +90,5 @@ benchmark_score <- function(benchmark, scores, tail = "one", remove_missing = TR
     return(invisible(result_output))
   }
 
-scores <- 80 + 23 * scale(rnorm(172))
-
-
-data |>
-  benchmark_score(0.67)
-
-
-# length_na <- function(data, remove_missing) {
-#
-#   if (remove_missing == TRUE) {
-#     n <- length(na.omit(data))
-#   } else {
-#     n <- length(data)
-#   }
-#   return(n)
-# }
 
 
