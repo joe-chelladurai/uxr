@@ -134,3 +134,5 @@ compare_means_between_groups <- function(data, var1, var2, variable, grouping_va
     return(result_table)
   }
 }
+
+

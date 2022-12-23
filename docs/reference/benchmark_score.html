@@ -50,17 +50,44 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">benchmark_score</span><span class="op">(</span><span class="va">benchmark</span>, <span class="va">scores</span>, tail <span class="op">=</span> <span class="st">"one"</span>, remove_missing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">benchmark_score</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">column</span>,</span>
+<span>  <span class="va">benchmark</span>,</span>
+<span>  <span class="va">mean</span>,</span>
+<span>  <span class="va">sd</span>,</span>
+<span>  <span class="va">n</span>,</span>
+<span>  tail <span class="op">=</span> <span class="st">"one"</span>,</span>
+<span>  remove_missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  input <span class="op">=</span> <span class="st">"long"</span>,</span>
+<span>  output <span class="op">=</span> <span class="st">"console"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>benchmark</dt>
+    <dl><dt>data</dt>
+<dd><p>dataframe</p></dd>
+
+
+<dt>column</dt>
+<dd><p>a column of scores from the dataframe</p></dd>
+
+
+<dt>benchmark</dt>
 <dd><p>benchmark</p></dd>
 
 
-<dt>scores</dt>
-<dd><p>a column or vector of scores</p></dd>
+<dt>mean</dt>
+<dd><p>if input = "values", enter mean value</p></dd>
+
+
+<dt>sd</dt>
+<dd><p>if input = "values", enter standard deviation value</p></dd>
+
+
+<dt>n</dt>
+<dd><p>if input = "values", enter total number of scores</p></dd>
 
 
 <dt>tail</dt>
@@ -68,36 +95,79 @@
 
 
 <dt>remove_missing</dt>
-<dd><p>TRUE/FALSE remove missing values? (default is TRUE)</p></dd>
+<dd><p>TRUE/FALSE (Default is TRUE)</p></dd>
+
+
+<dt>input</dt>
+<dd><p>Default: "long" - long form of data, "values" to pass values directly. If using this option, must specify mean, sd, and n.</p></dd>
+
+
+<dt>output</dt>
+<dd><p>Default: "console" - prints output in console and returns tibble invisibly.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>lower_ci, upper_ci, t, probability</p>
+<p>dataframe of results when saved to an object. show console output by default</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">scores</span> <span class="op">&lt;-</span> <span class="fl">80</span> <span class="op">+</span> <span class="fl">23</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">172</span><span class="op">)</span><span class="op">)</span> <span class="co"># 80 = mean, 23 = sd</span></span></span>
-<span class="r-in"><span><span class="fu">benchmark_score</span><span class="op">(</span>benchmark <span class="op">=</span> <span class="fl">67</span>, scores <span class="op">=</span> <span class="va">scores</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>scores <span class="op">=</span> <span class="va">scores</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">benchmark_score</span><span class="op">(</span><span class="va">data</span>, <span class="va">scores</span>, <span class="fl">67</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Compare Score with a Benchmark</span> <span style="color: #00BBBB;">──────────────────────────────────────────────</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> We can be 100% confident that the true score is between 67 and 93</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   term                result  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean                    80  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   sd                      23  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   se                1.753734  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   n                      172  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   df                     171  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   probability              0  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   tail                   one  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   confidence               1  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   margin_of_error         13  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   t                    7.413  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   lower_ci                67  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   upper_ci                93  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   term                    result  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean                        80  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sd                          23  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   se                    1.753734  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   n                          172  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   df                         171  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   probability       2.732705e-12  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   tail                       one  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   confidence                   1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   margin_of_error             13  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   t                     7.412757  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   lower_ci                    67  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   upper_ci                    93  </span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">|&gt;</span> <span class="fu">benchmark_score</span><span class="op">(</span><span class="va">scores</span>, <span class="fl">67</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Compare Score with a Benchmark</span> <span style="color: #00BBBB;">──────────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> We can be 100% confident that the true score is between 67 and 93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   term                    result  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean                        80  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sd                          23  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   se                    1.753734  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   n                          172  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   df                         171  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   probability       2.732705e-12  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   tail                       one  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   confidence                   1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   margin_of_error             13  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   t                     7.412757  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   lower_ci                    67  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   upper_ci                    93  </span>
+<span class="r-in"><span><span class="fu">benchmark_score</span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">80</span>, sd <span class="op">=</span> <span class="fl">23</span>, n <span class="op">=</span> <span class="fl">172</span>, benchmark <span class="op">=</span> <span class="fl">67</span>, input <span class="op">=</span> <span class="st">"values"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Compare Score with a Benchmark</span> <span style="color: #00BBBB;">──────────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> We can be 100% confident that the true score is between 67 and 93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   term                    result  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean                        80  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sd                          23  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   se                    1.753734  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   n                          172  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   df                         171  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   probability       2.732705e-12  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   tail                       one  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   confidence                   1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   margin_of_error             13  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   t                     7.412757  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   lower_ci                    67  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   upper_ci                    93  </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
