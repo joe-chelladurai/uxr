@@ -4,14 +4,14 @@
 \alias{test_wald_adj}
 \title{Adjusted Wald Confidence Intervals}
 \usage{
-test_wald_adj(success, total, ci_z)
+test_wald_adj(success, total, conf_level = 0.95)
 }
 \arguments{
 \item{success}{success}
 
 \item{total}{total}
 
-\item{ci_z}{z value}
+\item{conf_level}{conf_level (default: 0.95)}
 }
 \value{
 lower_ci, upper_ci
@@ -20,6 +20,6 @@ lower_ci, upper_ci
 Adjusted Wald Confidence Intervals
 }
 \examples{
-test_wald_adj(10, 12, 1.96)
-test_wald_adj(5, 7, 1.96)
+test_wald_adj(10, 12, 0.95)
+test_wald_adj(5, 7, 0.95)
 }

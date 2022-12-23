@@ -4,14 +4,14 @@
 \alias{test_wald}
 \title{Wald Confidence Intervals}
 \usage{
-test_wald(success, total, ci_z)
+test_wald(success, total, conf_level = 0.95)
 }
 \arguments{
 \item{success}{success}
 
 \item{total}{total}
 
-\item{ci_z}{z value}
+\item{conf_level}{conf_level (default: 0.95)}
 }
 \value{
 lower_ci, upper_ci
@@ -20,6 +20,6 @@ lower_ci, upper_ci
 Wald Confidence Intervals
 }
 \examples{
-test_wald(10, 12, 1.96)
-test_wald(5, 7, 1.96)
+test_wald(10, 12, 0.95)
+test_wald(5, 7, 0.95)
 }
