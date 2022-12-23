@@ -6,14 +6,22 @@
 \usage{
 compare_means_between_groups(
   data,
+  var1,
+  var2,
   variable,
   grouping_variable,
   groups,
-  equal_variances = FALSE
+  test = "Welch",
+  input = "wide",
+  output = "console"
 )
 }
 \arguments{
 \item{data}{data}
+
+\item{var1}{variable 1}
+
+\item{var2}{variable 2}
 
 \item{variable}{variable}
 
@@ -21,7 +29,11 @@ compare_means_between_groups(
 
 \item{groups}{Specify groups from grouping variable}
 
-\item{equal_variances}{Specify whether variances are equal (TRUE/FALSE)}
+\item{test}{Default: "Welch", choose between "student" and "Welch"}
+
+\item{input}{Default: "wide", choose between "long" and "wide". "wide" requires data var1 var2. "long" requires data, variable, grouping_variable groups}
+
+\item{output}{Default: "console" - prints output in console and returns tibble invisibly.}
 }
 \value{
 results
@@ -30,5 +42,17 @@ results
 Compare Means Between Groups
 }
 \examples{
-compare_means_between_groups(mtcars, mpg, cyl, c(4, 6))
+
+# Wide data - default
+data_wide <- data.frame(A = c(4, 2, 5, 3, 6, 2, 5),
+                        B = c(5, 2, 1, 2, 1, 3, 2))
+
+compare_means_between_groups(data_wide, var1 = A, var2 = B)
+
+# Long data
+data_long <- data_wide |> tibble::rowid_to_column("id") |>
+  tidyr::pivot_longer(cols = -id, names_to = "group", values_to = "variable")
+
+compare_means_between_groups(data_long, variable = variable,
+                             grouping_variable = group, groups = c("A", "B"), input = "long")
 }

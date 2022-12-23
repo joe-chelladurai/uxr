@@ -13,7 +13,7 @@
 #' @param remove_missing TRUE/FALSE (Default is TRUE)
 #' @param input Default: "long" - long form of data, "values" to pass values directly. If using this option, must specify count and total.
 #' @param output Default: "console" - prints output in console and returns tibble invisibly.
-#' @return dataframe of results when saved to object. show console output by default
+#' @return Dataframe of results when saved to an object. Show console output by default
 #' @export
 #' @import magrittr
 #' @importFrom huxtable position map_align print_screen by_cols as_hux
@@ -25,8 +25,16 @@
 #' @examples
 #' data <- data.frame(task_1 = c("y", "y", "y", "y", "n", "n", "n", NA, NA, NA, NA, NA, NA, NA),
 #'                    task_2 = c(0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1))
+#' # With dataframe columns
+#'
 #' benchmark_event(data, column = task_1, benchmark = 0.8, event = "y")
 #' benchmark_event(data, column = task_2, benchmark = 0.3, event = 1, event_type = "success")
+#'
+#' # Also pipeable
+#' data |>
+#'   benchmark_event(column = task_2, benchmark = 0.3, event = 1, event_type = "success")
+#'
+#' # With direct values
 #' benchmark_event(benchmark = 0.8, count = 4, total = 7, input = "values")
 
 
@@ -143,6 +151,3 @@ benchmark_event <- function(data,
 
 
 }
-
-
-

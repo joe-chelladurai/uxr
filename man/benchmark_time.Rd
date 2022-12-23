@@ -4,16 +4,30 @@
 \alias{benchmark_time}
 \title{Compare Time with a Benchmark}
 \usage{
-benchmark_time(benchmark, time, alpha, remove_missing = FALSE)
+benchmark_time(
+  data,
+  column,
+  benchmark,
+  alpha,
+  remove_missing = FALSE,
+  input = "long",
+  output = "console"
+)
 }
 \arguments{
-\item{benchmark}{benchmark}
+\item{data}{dataframe}
 
-\item{time}{a column or vector of time values}
+\item{column}{a column or vector of time values}
+
+\item{benchmark}{benchmark}
 
 \item{alpha}{alpha}
 
-\item{remove_missing}{TRUE/FALSE remove missing values?}
+\item{remove_missing}{TRUE/FALSE (Default is TRUE)}
+
+\item{input}{Default: "long" - long form of data, "values" to pass values directly. If using this option, must specify count and total.}
+
+\item{output}{Default: "console" - prints output in console and returns tibble invisibly.}
 }
 \value{
 lower_ci, upper_ci, t, probability
@@ -22,7 +36,6 @@ lower_ci, upper_ci, t, probability
 Compare Time with a Benchmark
 }
 \examples{
-benchmark_time(time = c(60, 53, 70, 42, 62, 43, 81),
-                       benchmark = 60,
-                       alpha = 0.05)
+data <- data.frame(time = c(60, 53, 70, 42, 62, 43, 81))
+benchmark_time(data, column = time, benchmark = 60, alpha = 0.05)
 }

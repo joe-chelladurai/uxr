@@ -73,9 +73,8 @@ You can use the `compare_benchmark_time()` function to answer this question. Thi
 
 ```{r}
 #| eval: false
-benchmark_time(benchmark = 60,
-                       time = c(60, 53, 70, 42, 62, 43, 81),
-                       alpha = 0.05)
+data <- data.frame(time = c(60, 53, 70, 42, 62, 43, 81))
+benchmark_time(data, column = time, benchmark = 60, alpha = 0.05)
 ```
 
 ```{bash}

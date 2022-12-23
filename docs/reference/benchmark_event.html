@@ -122,6 +122,8 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>task_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"y"</span>, <span class="st">"y"</span>, <span class="st">"y"</span>, <span class="st">"y"</span>, <span class="st">"n"</span>, <span class="st">"n"</span>, <span class="st">"n"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>                   task_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># With dataframe columns</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">benchmark_event</span><span class="op">(</span><span class="va">data</span>, column <span class="op">=</span> <span class="va">task_1</span>, benchmark <span class="op">=</span> <span class="fl">0.8</span>, event <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Compare Event Rate with a Benchmark</span> <span style="color: #00BBBB;">─────────────────────────────────────────</span></span>
@@ -144,6 +146,22 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   benchmark           0.3  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   result        0.7805158  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   probability       0.781  </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Also pipeable</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">benchmark_event</span><span class="op">(</span>column <span class="op">=</span> <span class="va">task_2</span>, benchmark <span class="op">=</span> <span class="fl">0.3</span>, event <span class="op">=</span> <span class="fl">1</span>, event_type <span class="op">=</span> <span class="st">"success"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Compare Event Rate with a Benchmark</span> <span style="color: #00BBBB;">─────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Based on the success rate of 42%, the probability that this rate exceeds a</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> benchmark of 30% is 78%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   term             result  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   count                 6  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   total                14  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   benchmark           0.3  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   result        0.7805158  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   probability       0.781  </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># With direct values</span></span></span>
 <span class="r-in"><span><span class="fu">benchmark_event</span><span class="op">(</span>benchmark <span class="op">=</span> <span class="fl">0.8</span>, count <span class="op">=</span> <span class="fl">4</span>, total <span class="op">=</span> <span class="fl">7</span>, input <span class="op">=</span> <span class="st">"values"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Compare Event Rate with a Benchmark</span> <span style="color: #00BBBB;">─────────────────────────────────────────</span></span>

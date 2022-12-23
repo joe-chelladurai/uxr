@@ -42,7 +42,7 @@ benchmark_event(
 \item{output}{Default: "console" - prints output in console and returns tibble invisibly.}
 }
 \value{
-dataframe of results when saved to object. show console output by default
+Dataframe of results when saved to an object. Show console output by default
 }
 \description{
 Compare Probability of an Event with Benchmark
@@ -50,7 +50,15 @@ Compare Probability of an Event with Benchmark
 \examples{
 data <- data.frame(task_1 = c("y", "y", "y", "y", "n", "n", "n", NA, NA, NA, NA, NA, NA, NA),
                    task_2 = c(0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1))
+# With dataframe columns
+
 benchmark_event(data, column = task_1, benchmark = 0.8, event = "y")
 benchmark_event(data, column = task_2, benchmark = 0.3, event = 1, event_type = "success")
+
+# Also pipeable
+data |>
+  benchmark_event(column = task_2, benchmark = 0.3, event = 1, event_type = "success")
+
+# With direct values
 benchmark_event(benchmark = 0.8, count = 4, total = 7, input = "values")
 }
