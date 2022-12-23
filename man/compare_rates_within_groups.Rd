@@ -4,7 +4,14 @@
 \alias{compare_rates_within_groups}
 \title{Compare Rates Within Groups}
 \usage{
-compare_rates_within_groups(data, x, y, conf_level = 0.95)
+compare_rates_within_groups(
+  data,
+  x,
+  y,
+  conf_level = 0.95,
+  input,
+  output = "console"
+)
 }
 \arguments{
 \item{data}{data}
@@ -14,6 +21,10 @@ compare_rates_within_groups(data, x, y, conf_level = 0.95)
 \item{y}{var 2}
 
 \item{conf_level}{Confidence level}
+
+\item{input}{input type currently only accepts "wide"}
+
+\item{output}{Default is "console", also accepts "tibble"}
 }
 \value{
 results
@@ -25,4 +36,5 @@ Compare Rates Within Groups
 A <- c(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1)
 B <- c(0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0)
 data <- data.frame(A, B)
+compare_rates_within_groups(data, A, B, input = "wide")
 }
