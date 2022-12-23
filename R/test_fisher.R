@@ -26,9 +26,9 @@ test_fisher <- function(data, x, y) {
 
   result <- fisher.test(table)
 
-  data.frame(p_value = result$p.value,
+  as_tibble(data.frame(p_value = result$p.value,
              odds_ratio = unname(result$estimate)
-             )
+             ))
 }
 
 

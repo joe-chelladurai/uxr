@@ -6,7 +6,7 @@
 #' @param data data
 #' @param x var 1
 #' @param y var 2
-#' @param z value
+#' @param conf_level Confidence level
 #' @importFrom dplyr bind_cols rename summarise pull
 #' @importFrom tibble as_tibble
 #' @return results
@@ -18,7 +18,10 @@
 #' get_confidence_intervals_within_groups(data, A, B)
 
 
-get_confidence_intervals_within_groups <- function(data, x, y, z = 1.96) {
+get_confidence_intervals_within_groups <- function(data, x, y, conf_level = 0.95) {
+
+  z <- abs(qnorm((1 - conf_level) / 2))
+
 
   adj_pairs <- get_concordant_discordant_pairs(data, x, y) |>
     mutate(adj = (z^2) / 8) |>

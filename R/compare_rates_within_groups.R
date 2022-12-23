@@ -5,7 +5,7 @@
 #' @param data data
 #' @param x var 1
 #' @param y var 2
-#' @param z value
+#' @param conf_level Confidence level
 #' @importFrom dplyr bind_cols rename
 #' @importFrom tibble as_tibble
 #' @return results
@@ -16,9 +16,9 @@
 #' data <- data.frame(A, B)
 
 
-compare_rates_within_groups <- function(data, x, y, z = 1.96) {
+compare_rates_within_groups <- function(data, x, y, conf_level = 0.95) {
 
-  conf_int <- get_confidence_intervals_within_groups(data, x, y, z)
+  conf_int <- get_confidence_intervals_within_groups(data, x, y, conf_level)
 
   test <- test_mcnemar(data, x, y) |> as_tibble() |> rename(p_value = value)
 

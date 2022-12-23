@@ -26,7 +26,30 @@ complete = c(37, 22)
 incomplete = c(418, 416)
 data <- data.frame(design, complete, incomplete)
 data <- data |> tidyr::pivot_longer(!design, names_to = "rate", values_to = "n") |>  tidyr::uncount(n)
+
+data
+
+```
+
+```{r}
+design_a <- filter(data, design == "A")
+design_b <- filter(data, design == "B")
+
+data.frame(design_a, design_b)
+```
+
+
+```{r}
+test_n_1_prop(data, design, rate)
+```
 test_n_1_prop(data, design, rate, conf_level = 0.90) 
+
+
+compare_rates_between_groups(data, )
+```
+
+```{r}
+
 ```
 
 

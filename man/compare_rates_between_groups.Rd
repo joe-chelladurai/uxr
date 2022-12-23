@@ -4,20 +4,40 @@
 \alias{compare_rates_between_groups}
 \title{Compare Rates Between Groups}
 \usage{
-compare_rates_between_groups(data, x, y, test)
+compare_rates_between_groups(
+  data,
+  group,
+  event,
+  test,
+  input = "long",
+  output = "console"
+)
 }
 \arguments{
 \item{data}{data}
 
-\item{x}{var 1}
+\item{group}{column in dataframe : group}
 
-\item{y}{var 2}
+\item{event}{column in dataframe : event}
 
 \item{test}{Type of test (fisher, n-1 two prop)}
+
+\item{input}{Defaults to "long"}
+
+\item{output}{"console" prints output to console; "tibble" returns tibble}
 }
 \value{
 results
 }
 \description{
 Compare Rates Between Groups
+}
+\examples{
+design = c("A","B")
+complete = c(37, 22)
+incomplete = c(418, 416)
+data <- data.frame(design, complete, incomplete)
+data <- data |> tidyr::pivot_longer(!design, names_to = "rate", values_to = "n") |>
+  tidyr::uncount(n)
+compare_rates_between_groups(data, group = design, event = rate)
 }

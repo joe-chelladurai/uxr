@@ -23,7 +23,7 @@
 
 test_n_1_prop <- function(data, x, y, conf_level = 0.95) {
 
-   z <- abs(qnorm((1 - conf_level) / 2))
+  z <- abs(qnorm((1 - conf_level) / 2))
 
   prop_tab <- data |> group_by({{x}}, {{y}}) |>
     count() |> ungroup() |>
@@ -72,7 +72,7 @@ test_n_1_prop <- function(data, x, y, conf_level = 0.95) {
 
   p_value <- 2*pnorm(q=z, lower.tail=FALSE)
 
-  list(a   = a,
+  as_tibble(data.frame(a   = a,
        b   = b,
        c   = c,
        d   = d,
@@ -82,7 +82,7 @@ test_n_1_prop <- function(data, x, y, conf_level = 0.95) {
        p_value = p_value,
        n   = n,
        lower_ci = ci$lower_ci,
-       upper_ci = ci$upper_ci)
+       upper_ci = ci$upper_ci))
 
 }
 

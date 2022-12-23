@@ -4,7 +4,7 @@
 \alias{compare_rates_within_groups}
 \title{Compare Rates Within Groups}
 \usage{
-compare_rates_within_groups(data, x, y, z = 1.96)
+compare_rates_within_groups(data, x, y, conf_level = 0.95)
 }
 \arguments{
 \item{data}{data}
@@ -13,7 +13,7 @@ compare_rates_within_groups(data, x, y, z = 1.96)
 
 \item{y}{var 2}
 
-\item{z}{value}
+\item{conf_level}{Confidence level}
 }
 \value{
 results
