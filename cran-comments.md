@@ -7,6 +7,8 @@ This is a resubmission. In this version I have:
 
 * Updated documentation
 
+* Added links to package website and bug reports
+
 
 ## Resubmission (Oct 4 2022)
 This is a resubmission. In this version I have:
